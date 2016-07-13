@@ -12,10 +12,21 @@ Class-based views
 Including another URLconf
     1. Add an import:  from blog import urls as blog_urls
     2. Add a URL to urlpatterns:  url(r'^blog/', include(blog_urls))
+
 """
+
+import sys 
 from django.conf.urls import include, url
 from django.contrib import admin
+from django.conf import settings
+from django.conf.urls.static import static
+from portfolio_revamp.myfirstview import sometext
+from portfolio_revamp.myfirstview import index
 
-urlpatterns = [
-    url(r'^admin/', include(admin.site.urls)),
-]
+sys.dont_write_bytecode = True
+
+urlpatterns = [url(r'^admin/', include(admin.site.urls)), 
+				url(r'^sometext/$', index),
+				url(r'^index/$', index),
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+

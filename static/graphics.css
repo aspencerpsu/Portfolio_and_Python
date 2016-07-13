@@ -1,0 +1,14 @@
+h1 {
+  background-color: red;
+  font: white;
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  left: 400px; }
+
+nav {
+  hover-background-color: red;
+  hover-width: 100%;
+  hover-height: 200px; }
+
+/*# sourceMappingURL=graphics.css.map */

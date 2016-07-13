@@ -12,6 +12,10 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+import psycopg2
+import sys
+
+sys.dont_write_bytecode = True
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -24,6 +28,12 @@ SECRET_KEY = 'pn&8y9l8!8n9fq9*x=@qr^fm*7%j*3%a0%urg!e*(q&=cp!wkb'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+
+SITE_ID = 1
+
+MEDIA_ROOT = ''
+
+MEDIA_URL = ''
 
 ALLOWED_HOSTS = []
 
@@ -38,8 +48,12 @@ INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
+    'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.admindocs',
+    'employees',
+    'portfolio_revamp',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -58,9 +72,10 @@ ROOT_URLCONF = 'portfolio_revamp.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ["C:/Python27/Lib/site-packages/django/bin/portfolio_revamp/templates",],
         'APP_DIRS': True,
         'OPTIONS': {
+
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
@@ -73,17 +88,31 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'portfolio_revamp.wsgi.application'
 
-
+ADMIN_MEDIA_PREFIX = '/media/'
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgreSQL9.6',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'postgres',
         'USER': 'postgres',
-        'HOST': '127.0.0.1',
-        'PORT': 5432,
+        'PASSWORD': 'd0mainframe',
+        'HOST': 'localhost',
+        'PORT': '3005',
+        'CONN_MAX_AGE': None,
+        'client_encoding': 'UTF8',
+        'default_transaction_isolation': 'read committed',
+        'TEST': {
+            'CHARSET': 'UTF8',
+            'NAME': 'postgres',
+            'USER': 'postgres',
+            'PASSWORD': 'd0mainframe',
+            'PORT': '3005',
+            'USER': 'postgres',
+            'CREATE_DB': 'TRUE',
+            'CREATE_USER': 'TRUE',
+        }
     }
 }
 
@@ -106,3 +135,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATICFILES_DIRS = ["c:\Python27\Lib\site-packages\django\\bin\portfolio_revamp\static\portfolio_revamp", os.path.join(BASE_DIR, 'static/portfolio_revamp/img'), ]
+
+STATIC_FINDERS = (
+                    'django.contrib.staticfiles.finders.FileSystemFinder',
+                    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    )
+
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
