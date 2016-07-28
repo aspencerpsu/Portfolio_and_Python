@@ -1,3 +1,10 @@
+if __name__ == "__main__" and __package__ == None:
+    from sys import path
+    from os.path import direname as dir
+    path.append(dir(path[0]))
+    __package__ = "settings"
+
+
 """
 Django settings for portfolio_revamp project.
 
@@ -14,9 +21,24 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 import os
 import psycopg2
 import sys
+import gettext
+import locale
+from django.conf import locale as site_locale
+
+current_locale, encoding = locale.getdefaultlocale()
+
+# LOCALE_PATHS = os.path.join(sys.prefix, 'Lib', 'site-packages', 'django', 'conf', 'locale')
+
+# language = gettext.translation("django", LOCALE_PATHS, [current_locale[0][0:2]])
+# language.install("django", LOCALE_PATHS, [current_locale[0][0:2]])
+
 
 sys.dont_write_bytecode = True
 
+SITE_URL = 'http://localhost.com'
+
+ABSOLUTE_URL_OVERRIDES = {}
+AUTH_USER_MODEL = 'auth.User'
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
@@ -35,7 +57,9 @@ MEDIA_ROOT = ''
 
 MEDIA_URL = ''
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
+ALLOWED_INCLUDE_ROOTS = []
+
 
 ADMINS = ("Akeem Spencer", "aspencerpsu@gmail.com")
 
@@ -52,8 +76,6 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.admindocs',
-    'employees',
-    'portfolio_revamp',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -81,10 +103,34 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media'
             ],
         },
     },
 ]
+
+TEMPLATE_DIRS = []
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.contrib.auth.context_processors.auth',
+    'django.template.context_processors.request',
+    'django.template.context_processors.debug',
+    'django.contrib.messages.context_processors.messages',
+    'django.template.context_processors.tz',
+    'django.template.context_processors.i18n',
+    'django.template.context_processors.media',
+    'django.template.context_processors.static',
+)
+
+TEMPLATE_DEBUG = False
+
+TEMPLATE_LOADERS = (
+    'django.template.loaders.filesystem.Loader',
+    'django.template.loaders.app_directories.Loader',
+    # 'django.template.loaders.eggs.Loader',
+)
+
+TEMPLATE_STRING_IF_INVALID = ''
 
 WSGI_APPLICATION = 'portfolio_revamp.wsgi.application'
 
@@ -116,7 +162,18 @@ DATABASES = {
     }
 }
 
+DATABASE_ROUTERS = []
+LOGGING = {500: True}
 
+LOGGING_CONFIG = None
+
+MIGRATION_MODULES = {'blog': 'blog.db_migrations', 'portfolio_revamp': None, 'employees': None, }
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+    }
+}
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
 
@@ -124,23 +181,92 @@ LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
 
-USE_I18N = True
+USE_I18N = False
 
 USE_L10N = True
 
 USE_TZ = True
 
+DEFAULT_INDEX_TABLESPACE = ''
 
+DEFAULT_TABLESPACE=''
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
+
+SESSION_ENGINE = 'django.contrib.sessions.backends.db'
 
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = ["c:\Python27\Lib\site-packages\django\\bin\portfolio_revamp\static\portfolio_revamp", os.path.join(BASE_DIR, 'static/portfolio_revamp/img'), ]
 
-STATIC_FINDERS = (
+STATICFILES_FINDERS = (
                     'django.contrib.staticfiles.finders.FileSystemFinder',
                     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    )
+)
 
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
+
+FORCE_SCRIPT_NAME = None
+
+SILENCED_SYSTEM_CHECKS = []
+
+SECURE_BROWSER_XSS_FILTER = False
+SECURE_CONTENT_TYPE_NOSNIFF = False
+SECURE_HSTS_INCLUDE_SUBDOMAINS = False
+SECURE_HSTS_SECONDS = 0
+SECURE_REDIRECT_EXEMPT = []
+SECURE_SSL_HOST = None
+SECURE_SSL_REDIRECT = False
+SECURE_PROXY_SSL_HEADER = None
+
+TEMPLATE_CONTEXT_PROCESSORS = ()
+
+DEBUG_PROPAGATE_EXCEPTIONS = False
+
+DEFAULT_EXCEPTION_REPORTER_FILTER = 'django.views.debug.SafeExceptionReporterFilter'
+
+DEFAULT_CHARSET = 'utf-8'
+
+DEFAULT_CONTENT_TYPE = 'text/html'
+
+USE_X_FORWARDED_HOST = False
+
+DECIMAL_SEPARATOR = '.'
+
+NUMBER_GROUPING = 0
+
+USE_THOUSAND_SEPARATOR = False
+
+THOUSAND_SEPARATOR = ','
+
+SESSION_COOKIE_NAME = 'sessionid'
+
+SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'
+
+SESSION_SAVE_EVERY_REQUEST = False
+
+USE_ETAGS = False
+
+DISALLOWED_USER_AGENTS = []
+
+PREPEND_WWW = False
+
+APPEND_SLASH = True
+
+MEDIA_ROOT="c:/Python27/Lib/site-packages/django/bin/portfolio_revamp/media"
+
+MEDIA_URL="/media/"
+
+MESSAGE_STORAGE = 'django.contrib.messages.storage.fallback.FallbackStorage'
+
+CSRF_COOKIE_NAME = 'csrftoken'
+CSRF_COOKIE_AGE = 60 * 60 * 24
+CSRF_COOKIE_DOMAIN = None
+CSRF_COOKIE_PATH = '/'
+CSRF_COOKIE_SECURE = False
+CSRF_COOKIE_HTTPONLY = False
+
+FILE_UPLOAD_PERMISSIONS = None
+FILE_UPLOAD_DIRECTORY_PERMISSIONS = None
+
+

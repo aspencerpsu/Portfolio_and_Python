@@ -18,15 +18,15 @@ Including another URLconf
 import sys 
 from django.conf.urls import include, url
 from django.contrib import admin
-from django.conf import settings
 from django.conf.urls.static import static
-from portfolio_revamp.myfirstview import sometext
-from portfolio_revamp.myfirstview import index
+from portfolio_revamp.views import sometext
+from portfolio_revamp.views import index
+import settings
 
 sys.dont_write_bytecode = True
 
 urlpatterns = [url(r'^admin/', include(admin.site.urls)), 
 				url(r'^sometext/$', index),
 				url(r'^index/$', index),
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

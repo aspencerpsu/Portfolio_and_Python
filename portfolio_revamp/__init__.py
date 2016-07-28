@@ -1,3 +1,6 @@
+if __name__ == "__main__" and __package__ is None:
+    __package__ = "portfolio_revamp.portfolio_revamp"
+
 """
 Settings and configuration for Django.
 
@@ -16,8 +19,9 @@ from django.core.exceptions import ImproperlyConfigured
 from django.utils.deprecation import RemovedInDjango110Warning
 from django.utils.functional import LazyObject, empty
 from django.utils import six
+import settings
 
-ENVIRONMENT_VARIABLE = "DJANGO_SETTINGS_MODULE"
+ENVIRONMENT_VARIABLE = "randymanmacho"
 
 
 class LazySettings(LazyObject):
@@ -48,7 +52,7 @@ class LazySettings(LazyObject):
             self._setup(name)
         return getattr(self._wrapped, name)
 
-    def configure(self, default_settings=global_settings, **options):
+    def configure(self, default_settings=settings, **options):
         """
         Called to manually configure the settings. The 'default_settings'
         parameter sets where to retrieve any unspecified values from (its
@@ -100,8 +104,7 @@ class Settings(BaseSettings):
         tuple_settings = (
             "ALLOWED_INCLUDE_ROOTS",
             "INSTALLED_APPS",
-            "TEMPLATE_DIRS",
-            "LOCALE_PATHS",
+            "DATABASES",
         )
         self._explicit_settings = set()
         for setting in dir(mod):
@@ -192,3 +195,4 @@ class UserSettingsHolder(BaseSettings):
         return (deleted or set_locally or set_on_default)
 
 settings = LazySettings()
+settings.configure()
