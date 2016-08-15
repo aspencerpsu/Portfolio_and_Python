@@ -76,6 +76,9 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.admindocs',
+    'django.contrib.postgres.operations',
+    'blogs',
+    'employees',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -154,7 +157,6 @@ DATABASES = {
             'NAME': 'postgres',
             'USER': 'postgres',
             'PASSWORD': 'd0mainframe',
-            'PORT': '3005',
             'USER': 'postgres',
             'CREATE_DB': 'TRUE',
             'CREATE_USER': 'TRUE',
@@ -167,7 +169,7 @@ LOGGING = {500: True}
 
 LOGGING_CONFIG = None
 
-MIGRATION_MODULES = {'blog': 'blog.db_migrations', 'portfolio_revamp': None, 'employees': None, }
+MIGRATION_MODULES = {'blog': 'blog.migrations', 'portfolio_revamp': None, 'employees': 'employees.migrations', }
 
 CACHES = {
     'default': {
@@ -203,6 +205,8 @@ STATICFILES_FINDERS = (
                     'django.contrib.staticfiles.finders.FileSystemFinder',
                     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 )
+
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
@@ -269,4 +273,4 @@ CSRF_COOKIE_HTTPONLY = False
 FILE_UPLOAD_PERMISSIONS = None
 FILE_UPLOAD_DIRECTORY_PERMISSIONS = None
 
-
+FIXTURE_DIRS = ()

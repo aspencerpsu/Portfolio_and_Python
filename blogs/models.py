@@ -26,6 +26,7 @@ class Blogs(models.Model):
 	content=models.FileField(upload_to="/weeklyProject/%Y/%m/", max_length=100, )
 	figures=models.ImageField(upload_to="/img", height_field=None, width_field=None, max_length=100)
 	graphs=models.FileField(upload_to=fileback)
+	census=models.IntegerField()
 
 class Admin:
 	pass
