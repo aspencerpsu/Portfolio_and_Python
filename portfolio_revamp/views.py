@@ -15,9 +15,9 @@ def sometext(request):
 
 def index(request):
 	index = open(r'templates/home.html').read()
-	paginator = Paginator([Blogs.objects.first()], 1)
+	# paginator = Paginator([Blogs.objects.first()], 1)
 
-	page = paginator.page(1)
+	# page = paginator.page(1)
 	return HttpResponse(index)
 
 def listing(request):
