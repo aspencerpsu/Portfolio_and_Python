@@ -63,6 +63,29 @@ ALLOWED_INCLUDE_ROOTS = []
 
 ADMINS = ("Akeem Spencer", "aspencerpsu@gmail.com")
 
+AccessToken = "457888099-zEIwcezHpVbznLivoMfZ0dzXUgZdN8w3DfcFP1Kl"
+
+AccessTokenSecret = "cfsPMsazvavdOMQnZUoRUSVzoZHnmuyOv0Kw0UDP1kBSg"
+
+Consumer_Secret = " wOokX8k54HrrWEXGORnarOYzZFiISSVxT90xOJgvX3FcMUX0QB"
+
+Consumer_key = "pX0OETs87mPD0CROfEl5xNSKL"
+
+OWNER = "Dagen1ous"
+
+OWNERID = 457888099
+
+oauth_nonce="1044602964"
+
+OAUTH_CONSUMER_KEY = "DC0sePOBbQ8bYdC8r4Smg"
+
+OAUTH_SIGNATURE_METHOD="HMAC-SHA1"
+
+OAUTH_TOKEN="457888099-NTtTfXOZ4kJGHAqmp8Moigiq2hIVNCGy1VAFwDWd"
+
+OAUTH_SIGNATURE="oi61wx1nzF2%2FiDRBD5QlDWPuYac%3D"
+
+
 MANAGERS = ADMINS
 
 # Application definition
@@ -77,8 +100,14 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.admindocs',
     'django.contrib.postgres.operations',
+    'django.template.loader',
     'blogs',
     'employees',
+    'twitter',
+    'tweepy',
+    # 'm2m_history',
+    # 'taggit',
+    # 'oauth_tokens',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -133,7 +162,11 @@ TEMPLATE_LOADERS = (
     # 'django.template.loaders.eggs.Loader',
 )
 
+INTERNAL_IPS = ["127.0.0.1"]
+
 TEMPLATE_STRING_IF_INVALID = ''
+
+FILE_CHARSET = 'utf-8'
 
 WSGI_APPLICATION = 'portfolio_revamp.wsgi.application'
 
