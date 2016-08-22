@@ -6,6 +6,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" contents="width=device-width, initial-scale=1">
 		<link rel="icon" type="image/png" src="/static/logo.png" type="image/x-icon"/>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>	
 	</head>
 	<body>
 		<div class = "header">
@@ -48,38 +49,38 @@
 		</div>
 
 		<div class="bloggsophere">
-			
-			{% extends "base.html" %}
-			{% block title %}
-			{% endblock %}
-			{% block navi %}
-				<a href="{% url homepage_index%"}>Home's Page</a>-<a href="{url homepage_about}">About</a>
-				<a href="{% url homepage_contact %}">Contact</a>-<a href="{% url homepage_archive %}">Archive</a>
+			{% comment %}
+				{# extends "base.html" #}
+				{# block navi #}
+					<a href="{# url homepage_index #}">Home's Page</a>-<a href="{# url homepage_about #}">About</a>
+					<a href="{# url homepage_contact #}">Contact</a>-<a href="{# url homepage_archive #}">Archive</a>
 
-			{% block content %}
-				<h3>Entries</h3>
+				{# block content #}
+					<h3>Entries</h3>
 
-				{% for e in page.object_list%}
-					<div>{{e.title}}-{{e.created}}</div>
-						<div>{{e.text}}</div>
-						<br/>
-				{% endfor %}
-				{% if page.has_previous %}
-					<a href="?page{{page.previous_page_number}}">prev</a>
-				{% endif %}
-				
-				{% if page.has_next %}
-					<a href="?page{{ page.previous_page_number }}">next</a>
-				{% endif %}
-			{% endblock %}
+					{# for e in page.object_list #}
+						<div>{{# e.title #}}-{{# e.created #}}</div>
+							<div>{{# e.text #}}</div>
+							<br/>
+					{# endfor #}
+					{# if page.has_previous #}
+						<a href="?page{{#page.previous_page_number#}}">prev</a>
+					{# endif #}
+					
+					{# if page.has_next #}
+						<a href="?page{{# page.previous_page_number #}}">next</a>
+					{# endif #}
+				{# endblock #}
 
-			{% block footer %}
-			2016-AkeemSpencer's Blogs
-			For more inquries or if you would like your own blog generated: contact Akeem
-			{% endblock %}
+				{# block footer #}
+				2016-AkeemSpencer's Blogs
+				For more inquries or if you would like your own blog generated: contact Akeem
+				{# endblock #}
+			{% endcomment %}
 		</div>
 
 		<div class = "row clearfix">
+
 			<div class="footer">
 				<div class="wrap">
 					<div class="nav-column">
@@ -110,8 +111,16 @@
 							<a href="http://twitter.com/akeemspencer" target="_blank"><img src="/static/twitter.png" alt=""></a></h3>
 						<div class="twitter-feed">
 							<div id="tweets">
-								.......
-								A break
+								
+								{% block title %}Recent Tweets{% endblock %} 
+
+								{% block non_retweets %}
+								<ul>
+									<li><a href="https://www.twitter.com/status/{{id}}"></a></li>
+								</ul>
+								{% endblock %}
+								<!-- .......
+								A break -->
 							</div>
 							<script>
 								$.getJSON('includes/twitter-feed/cache/get-feed.php', function(data) {
@@ -163,6 +172,7 @@
 					</p>
 				</div>
 			</div>
+			
 		</div>
 		
 	</body>
