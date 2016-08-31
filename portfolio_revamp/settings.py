@@ -105,6 +105,7 @@ INSTALLED_APPS = (
     'employees',
     'twitter',
     'tweepy',
+    'kombu.transport.django',
     # 'm2m_history',
     # 'taggit',
     # 'oauth_tokens',
@@ -137,6 +138,8 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.media'
             ],
+            'debug': True,
+            
         },
     },
 ]
@@ -168,6 +171,8 @@ TEMPLATE_STRING_IF_INVALID = ''
 
 FILE_CHARSET = 'utf-8'
 
+FORMAT_MODULE_PATH = None
+
 WSGI_APPLICATION = 'portfolio_revamp.wsgi.application'
 
 ADMIN_MEDIA_PREFIX = '/media/'
@@ -185,6 +190,7 @@ DATABASES = {
         'CONN_MAX_AGE': None,
         'client_encoding': 'UTF8',
         'default_transaction_isolation': 'read committed',
+        'BROKER_URL': 'django://',
         'TEST': {
             'CHARSET': 'UTF8',
             'NAME': 'postgres',

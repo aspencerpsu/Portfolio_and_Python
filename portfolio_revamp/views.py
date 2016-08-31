@@ -29,7 +29,7 @@ def index(request):
 	# paginator = Paginator([Blogs.objects.first()], 1)
 
 	# page = paginator.page(1)
-	return render(request, 'home.html', {"id": second_tweet.id_str.encode()} )
+	return render(request, "home.html", {"last_5": last_5, "second_tweet": second_tweet})
 
 def listing(request):
 	contact_list = Contacts.objects.all()

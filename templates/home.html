@@ -1,12 +1,15 @@
 <! DOCTYPE html>
 <html lang="en">
 	<head>
+		<style></style>
 		<title>Spencer Tech Consulting & Solution's Homepage</title>
 		<link rel="stylesheet" type="text/css" href="/static/graphics.css"/>
 		<meta charset="utf-8">
 		<meta name="viewport" contents="width=device-width, initial-scale=1">
 		<link rel="icon" type="image/png" src="/static/logo.png" type="image/x-icon"/>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>	
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/styles/default.min.css">
+		<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/highlight.min.js"></script>	
 	</head>
 	<body>
 		<div class = "header">
@@ -25,9 +28,8 @@
 				</ul>
 			</nav>
 		</div>
-		<div class="row"></div>
 		
-		<div class="row">
+		<div class="row clearfix">
 			<div class="bar">
 				<div class="wrap">
 					
@@ -39,11 +41,27 @@
 					<div class="action-container">
 
 						<h2 class="action">
-							Spencer Tech Consulting & Solutions offers entrepreneurs, bootstrappers, venture capitalists and thriving business owners alike product services featuring IT Solutions, Programming Techniques, server maintenance and e-commerce businesses for flat-rate, inexpensive setup.
+							Spencer Tech Consulting & Solutions offers entrepreneurs, bootstrappers, venture capitalists and thriving business owners alike product services featuring IT Solutions, Programming Techniques, Server Maintenance and E-Commerce businesses for a flat-rate, inexpensive setup.
 						</h2>
 
-
 					</div>
+
+					<pre>
+						<code>
+							<!-- class Greeter
+  								def initialize(name)
+    								@name = name.capitalize
+  								end
+
+  								def salute
+    								puts "Hello #{@name}!"
+  								end
+							end
+
+							g = Greeter.new("world")
+							g.salute -->
+						</code>
+					</pre>
 				</div>
 			</div>
 		</div>
@@ -79,6 +97,35 @@
 			{% endcomment %}
 		</div>
 
+		<div class="row clearfix">
+			<div class="twitter-column">
+
+				<!-- Remember this Twitter column is located in the row above and the position is skewed upward.....see the style.sass sheet and the graphics.css sheet.  -->
+						<h3><strong>Twitter Feed &nbsp</strong>
+							<a href="http://twitter.com/akeemspencer" target="_blank"><img src="/static/twitter.png" alt=""></a></h3>
+						<div class="twitter-feed">
+							<div id="tweets">
+								
+								{% block title %}Recent Tweets{% endblock %} 
+								
+								{% block non_retweets %}
+								<ul>
+									{% for tweet in last_5 %}
+										<li>&nbsp&nbsp&nbsp&nbsp&nbsp{{ tweet.text }}<a href="https://www.twitter.com/status/{{ tweet.id_str }}">{% if tweet.retweeted %} RT {% endif %} See Tweet</a>
+
+										</li>
+									{% endfor %}
+								</ul>
+								{% endblock %}
+								<!-- .......
+								A break -->
+							</div>
+				
+							
+						</div>
+					</div>
+		</div>
+
 		<div class = "row clearfix">
 
 			<div class="footer">
@@ -91,7 +138,7 @@
 							<li><a href="/blogs">Blogs</a></li>
 							<li><a href="/contact">Contact</a></li>
 						</ul>
-
+						 
 						<ul class="social-bottom">
 							<li><a href="www.facebook.com/akeemspencer"><img src="/static/facebook-white.png" alt="facebook-icon"/></a></li>
 							<li><a href="www.twitter.com/dagen1us"><img src="/static/twitter-white.png" alt="twitter-icon"/></a></li>
@@ -106,74 +153,29 @@
 							<li><div class="tutorials">WordPress Bloggers</div></li>
 						</ul>
 					</div>
-					<div class="twitter-column">
-						<h3>Twitter Feed &nbsp
-							<a href="http://twitter.com/akeemspencer" target="_blank"><img src="/static/twitter.png" alt=""></a></h3>
-						<div class="twitter-feed">
-							<div id="tweets">
-								
-								{% block title %}Recent Tweets{% endblock %} 
+					<pre><code class="contactblock">
 
-								{% block non_retweets %}
-								<ul>
-									<li><a href="https://www.twitter.com/status/{{id}}"></a></li>
-								</ul>
-								{% endblock %}
-								<!-- .......
-								A break -->
-							</div>
-							<script>
-								$.getJSON('includes/twitter-feed/cache/get-feed.php', function(data) {
-									$.each(data, function(i) {
-										var url = "http://twitter.com/"+data[i]['user']['screen_name'];
-										var tweet = "<p><a href='"+url+"'>@"+data[i]['user']['screen_name']+"</a>";
-										tweet += "<br/>";
-										tweet += twitterfy(data[i]['text']);
-										tweet += "</p>";
-										$('#tweets').append(tweet);
-									});
-								});
+						<!-- To become a contributer with me and help with recruiting, 
+							contact 845-598-6387. Would love to have front-end 
+							developers, back-end developers, technical developers, 
+							marketing, sales, and tech ops. Otherwise, email me at: -->
 
-								function twitterfy(text){
-									text = text.replace(/(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%?=~_|])/i, "<a href='$1' target='_blank'>$1</a>")
-
-											.replace(/(^|\s)#(\w+)/, "$1<a href='http://search.twitter.com/search?q=%23$2' target='_blank'>#2")
-											.replace(/(^|\s)@(\w+)/, "$1<a href='http://www.twitter.com/$2' target='_blank'>@$2</a>")
-
-											return text;
-								}
-
-								function parseTwitterDate(date) {
-									var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', ];
-									var d = new Date(date);
-									var month = months[d.getMonth()];
-									var day = d.getDay();
-									var hours = d.getHours();
-
-									// 12 hour instead of 24
-
-									var suff = "am";
-									if (hours==0) {hours=12;}
-									else if (hours==12) {suff="pm";}
-									else if (hours>12) {hours=(hours-12); suff="pm";}
-
-									//0 in front of single digits
-									var mins = d.getMinutes();
-									if (mins.length==1) {mins = "0"+mins;}
-
-									return month+' '+day+' '+hours+":"+mins+suff;
-								}
-							</script>
-						</div>
-					</div>
+						</code>
+					</pre>
 					<p class="copyright clearfix">
 						Spencer Tech Consulting & Solutions is owned by Akeem Spencer, the CEO. @2016 All rights reserved 
 						<a href="#">Privacy Policy, and Terms of Service</a>
 					</p>
 				</div>
 			</div>
-			
 		</div>
-		
+
+		<script>
+			$(document).ready(function(){
+				$('.contactblock').html("\n To become a contributer with me and help with recruiting on\n SEO training, contact (845)-598-6387. Would love to have front-end \n developers, back-end developers, technical developers, \n marketing, sales, and tech ops. Email the following address \n for possible client interaction with project success completions:  ");
+
+				$('.contactblock').append("\n\n\t\  MAILTO: <a href=\"mailto:aspencerpsu@gmail.com\">aspencerpsu@gmail.com</a>")
+			});
+		</script>
 	</body>
 </html>

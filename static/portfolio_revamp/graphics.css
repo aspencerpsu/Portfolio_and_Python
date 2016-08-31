@@ -4,7 +4,9 @@
   background-color: #000000;
   opacity: 1;
   position: absolute;
-  z-index: 80; }
+  z-index: 80;
+  margin-top: -18px;
+  margin-left: -8px; }
   .header nav {
     transition: opacity, 1.485s;
     width: 1000px;
@@ -72,7 +74,8 @@
   overflow: visible;
   float: left;
   width: 100%;
-  margin-top: 16.85%; }
+  margin-top: 16.85%;
+  padding-top: 50px; }
 
 .wrap {
   margin: 0 auto;
@@ -90,22 +93,20 @@
   margin-top: -84px; }
 
 .action {
-  margin: 35px 0 0 0;
-  padding: 15px 5%;
+  margin: 19px 0 0 0;
   color: #4c4c4c;
   text-shadow: none;
   font-family: "DroidSansRegular", sans-serif;
   font-size: 2.2rem;
   letter-spacing: -2px;
   font-weight: normal;
-  line-height: 120%;
-  border: 0.2px solid #908f8f; }
+  line-height: 120%; }
 
 #row1-image {
   width: 543px;
   height: 325px;
   vertical-align: middle;
-  margin-top: -40px;
+  margin-top: -46px;
   padding: 0 10%; }
 
 .bloggsophere {
@@ -128,7 +129,7 @@
     font-style: normal;
     margin: 35px 0 0 5%; }
   .footer .social-bottom {
-    margin: 90px 30% 0 0;
+    margin: 117px 30% 0 0;
     list-style: none;
     font-family: "DroidSansRegular", san-serif;
     font-weight: normal;
@@ -146,7 +147,23 @@
   .footer .nav-column a {
     color: #fff; }
   .footer a {
-    text-decoration: None; }
+    text-decoration: underline; }
+  .footer pre code {
+    position: relative;
+    top: 70px;
+    background-color: #2d2d2d;
+    overflow-y: auto;
+    overflow-x: auto;
+    max-height: 420px;
+    color: #cccccc;
+    display: block;
+    vertical-align: baseline;
+    left: 28px;
+    line-height: 136%;
+    padding: 3px; }
+    .footer pre code a {
+      text-decoration: underline;
+      color: #cc99cc; }
 
 .clearfix {
   display: block; }
@@ -167,16 +184,15 @@
     list-style-type: None; }
 
 .network-column {
-  text-align: left;
   width: 37%;
-  float: left;
   font-family: "DroidSansRegular", sans-serif;
   font-weight: normal;
   font-style: normal;
   padding: 2px 6px 4px 6px;
   float: right;
   text-align: center;
-  color: #fff; }
+  color: #fff;
+  margin-top: 50px; }
   .network-column ul {
     list-style: None;
     list-style-type: None; }
@@ -187,17 +203,39 @@
 
 .twitter-column {
   text-align: left;
-  width: 35%;
+  width: 20%;
   float: left;
-  color: #fff;
-  margin: 0 0 0 0; }
+  color: #c1197f;
+  margin-top: -325px; }
+  .twitter-column h3 {
+    position: relative;
+    top: -80px; }
 
-p .copyright {
-  float: left;
-  color: #fff;
-  text-align: center;
+.twitter-feed {
   width: 100%;
-  font-size: 0.8rem;
-  margin: 35px 0 0 0; }
+  word-wrap: break-word; }
+
+#tweets {
+  text-align: left;
+  color: #c1197f;
+  width: 300px;
+  height: 330px;
+  overflow: scroll;
+  margin-top: -85px; }
+  #tweets h3 {
+    font-size: 22px; }
+  #tweets ul {
+    padding: 0 0 0 10; }
+    #tweets ul li {
+      list-style-type: none;
+      padding: 20px 5px; }
+
+.copyright {
+  position: relative;
+  top: 310px;
+  font-size: 14px;
+  text-align: center;
+  color: #fff;
+  left: 75px; }
 
 /*# sourceMappingURL=graphics.css.map */

@@ -5,6 +5,8 @@
 	opacity: 1
 	position: absolute
 	z-index: 80
+	margin-top: -18px
+	margin-left: -8px
 	
 	nav
 		transition: opacity, 1.485s
@@ -81,6 +83,7 @@
 	float: left
 	width: 100%
 	margin-top: 16.85%
+	padding-top: 50px
 
 .wrap
 	margin: 0 auto
@@ -99,7 +102,6 @@
 
 .action
 	margin: 35px 0 0 0
-	padding: 15px 5%
 	color: #4c4c4c
 	text-shadow: none
 	font-family: "DroidSansRegular", sans-serif
@@ -107,18 +109,18 @@
 	letter-spacing: -2px
 	font-weight: normal
 	line-height: 120%
-	border: 0.2px solid #908f8f
 
 #row1-image
 	width: 543px
 	height: 325px
 	vertical-align: middle
-	margin-top: -40px
+	margin-top: -46px
 	padding: 0 10%
 
 .bloggsophere
 	width: 800px
 	height: 275px
+	background-color: "#a69f9f"
 
 .footer
 	background: #4E4E4E url('http://www.developershed.com/images/footer-background.png') repeat
@@ -140,7 +142,7 @@
 		margin: 35px 0 0 5%
 
 	.social-bottom
-		margin: 90px 30% 0 0
+		margin: 117px 30% 0 0
 		list-style: none
 		font-family: 'DroidSansRegular', san-serif
 		font-weight: normal
@@ -164,7 +166,17 @@
 		color: #fff
 
 	a
-		text-decoration: None
+		text-decoration: underline
+
+	code
+		position: relative
+		top: 50px
+		background-color: #2d2d2d
+		color: #cccccc
+
+		a
+			text-decoration: underline
+			color: #cc99cc
 	
 
 
@@ -210,15 +222,41 @@
 
 .twitter-column 
 	text-align: left
-	width: 35%
+	width: 20%
 	float: left
-	color: #fff
-	margin: 0 0 0 0
+	color: #c1197f
+	margin-top: -325px
 
-p .copyright
-	float: left
-	color: #fff
-	text-align: center
+	h3
+		position: relative
+		top: -80px
+
+.twitter-feed
 	width: 100%
-	font-size: .8rem
-	margin: 35px 0 0 0
+	word-wrap: break-word
+
+#tweets
+	text-align: left
+	color: #c1197f
+	width: 300px
+	height: 330px
+	overflow: scroll
+	margin-top: -85px
+
+	h3
+		font-size: 22px
+	
+	ul
+		padding: 0 0 0 10
+
+		li
+			list-style-type: none
+			padding: 20px 5px
+
+.copyright
+	position: relative
+	top: 310px
+	font-size: 14px
+	text-align: center
+	color: #fff
+	left: 75px
