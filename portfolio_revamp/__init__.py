@@ -16,12 +16,12 @@ import warnings
 
 from django.conf import global_settings
 from django.core.exceptions import ImproperlyConfigured
-from django.utils.deprecation import RemovedInDjango110Warning
+from django.utils.deprecation import RemovedInDjango20Warning
 from django.utils.functional import LazyObject, empty
 from django.utils import six
 import settings
 
-ENVIRONMENT_VARIABLE = "randymanmacho"
+ENVIRONMENT_VARIABLE = "randymachoman"
 
 
 class LazySettings(LazyObject):
@@ -36,7 +36,9 @@ class LazySettings(LazyObject):
         is used the first time we need any settings at all, if the user has not
         previously configured the settings manually.
         """
-        settings_module = os.environ.get(ENVIRONMENT_VARIABLE)
+
+        os.environ.setdefault("DJANGO_SETTINGS_MODULE", "portfolio_revamp.settings")
+        settings_module = os.environ.get("DJANGO_SETTINGS_MODULE")
         if not settings_module:
             desc = ("setting %s" % name) if name else "settings"
             raise ImproperlyConfigured(
@@ -127,7 +129,7 @@ class Settings(BaseSettings):
                 "Please add 'django.contrib.auth.middleware.SessionAuthenticationMiddleware' "
                 "to your MIDDLEWARE_CLASSES setting when you are ready to opt-in after "
                 "reading the upgrade considerations in the 1.8 release notes.",
-                RemovedInDjango110Warning
+                RemovedInDjango20Warning
             )
 
         if hasattr(time, 'tzset') and self.TIME_ZONE:
@@ -196,3 +198,4 @@ class UserSettingsHolder(BaseSettings):
 
 settings = LazySettings()
 settings.configure()
+settings.configured

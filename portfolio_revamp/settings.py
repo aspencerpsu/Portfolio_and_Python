@@ -58,6 +58,7 @@ MEDIA_ROOT = ''
 MEDIA_URL = ''
 
 ALLOWED_HOSTS = ['*']
+
 ALLOWED_INCLUDE_ROOTS = []
 
 
@@ -109,6 +110,7 @@ INSTALLED_APPS = (
     # 'm2m_history',
     # 'taggit',
     # 'oauth_tokens',
+    'rest_framework',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -122,7 +124,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.security.SecurityMiddleware',
 )
 
-ROOT_URLCONF = 'portfolio_revamp.urls'
+ROOT_URLCONF = "portfolio_revamp.urls"
 
 TEMPLATES = [
     {
