@@ -1,7 +1,7 @@
 .header {
   width: 100%;
   height: 200px;
-  background-color: #000000;
+  background-color: #090809;
   opacity: 1;
   position: absolute;
   z-index: 80;
@@ -11,13 +11,11 @@
     transition: opacity, 1.485s;
     width: 1000px;
     height: 95px;
-    background-color: rgba(35, 41, 40, 0.75);
+    background-color: #090809;
     position: absolute;
-    top: 106px;
+    top: 105px;
     left: 280px;
-    opacity: 0.3; }
-    .header nav:hover {
-      opacity: 1; }
+    opacity: 1; }
     .header nav .logo {
       float: left; }
     .header nav ul {
@@ -93,7 +91,7 @@
   margin-top: -84px; }
 
 .action {
-  margin: 35px 0 0 0;
+  margin: 19px 0 0 0;
   color: #4c4c4c;
   text-shadow: none;
   font-family: "DroidSansRegular", sans-serif;
@@ -148,12 +146,20 @@
     color: #fff; }
   .footer a {
     text-decoration: underline; }
-  .footer code {
+  .footer pre code {
     position: relative;
-    top: 50px;
+    top: 70px;
     background-color: #2d2d2d;
-    color: #cccccc; }
-    .footer code a {
+    overflow-y: auto;
+    overflow-x: auto;
+    max-height: 420px;
+    color: #cccccc;
+    display: block;
+    vertical-align: baseline;
+    left: 28px;
+    line-height: 136%;
+    padding: 3px; }
+    .footer pre code a {
       text-decoration: underline;
       color: #cc99cc; }
 
@@ -176,16 +182,15 @@
     list-style-type: None; }
 
 .network-column {
-  text-align: left;
   width: 37%;
-  float: left;
   font-family: "DroidSansRegular", sans-serif;
   font-weight: normal;
   font-style: normal;
   padding: 2px 6px 4px 6px;
   float: right;
   text-align: center;
-  color: #fff; }
+  color: #fff;
+  margin-top: 50px; }
   .network-column ul {
     list-style: None;
     list-style-type: None; }
@@ -225,10 +230,12 @@
 
 .copyright {
   position: relative;
-  top: 310px;
+  top: 130px;
   font-size: 14px;
   text-align: center;
   color: #fff;
-  left: 75px; }
+  left: 75px;
+  display: block;
+  width: 700px; }
 
 /*# sourceMappingURL=graphics.css.map */
