@@ -51,6 +51,8 @@
           height: 100px;
           display: block;
           text-align: justify; }
+        .header nav ul li:last-child a {
+          margin-left: 1px; }
         .header nav ul li:hover {
           border: 20px hidden rgba(35, 41, 40, 0.75);
           border-radius: 50%;
