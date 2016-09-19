@@ -104,6 +104,8 @@ INSTALLED_APPS = (
     'django.template.loader',
     'blogs',
     'employees',
+
+    # Third Party Apps
     'twitter',
     'tweepy',
     'kombu.transport.django',
@@ -111,7 +113,13 @@ INSTALLED_APPS = (
     # 'taggit',
     # 'oauth_tokens',
     'rest_framework',
+    'crispy_forms',
+    'pagedown',
+
+
 )
+
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
