@@ -1,0 +1,154 @@
+{% load static %}
+
+<! DOCTYPE html>
+
+<html>
+	<head>
+		<title>Page Not Found 404 Error</title>
+		<link rel="stylesheet" type="text/css" href="static/404/404.css"/>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	</head>
+
+	<body>
+		<div class="row">
+			<div class="header">
+				<nav class="navbar">
+					<div class="container-fluid">
+						<div class="navbar-header">
+							<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#whatever" aria-expanded="false">
+								<span class="sr-only">Toggle Navigation</span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</button>
+							<a href="/index/" class="navbar-brand logo"><img src="{% static 'emblemmatic-spencer-tech-consulting-&-solutions-logo-60.png' %}" alt="Spencer Tech Logo"></a>
+						</div>
+					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+						<ul class="nav navbar-nav navbar-left">
+							<li class="active"><a href="#">What We Do<span class="sr-only">(current)</span></a></li>
+							<li><a href="#">Considerations</a></li>
+							<li><a href="#">About Us</a></li>
+							<li><a href="#">Contact</a></li>
+							<li><a href="/posts/">Blog Posts</a></li>
+						</ul>
+					</div>
+					</div>
+				</nav>
+			</div>
+		</div>
+
+		<div class="container clearfix">
+			{% include "404_content.html" %}
+		</div>
+			<div class="row">
+			<div class="footer">
+				<div class="wrap">
+					<div class="nav-column">
+						<ul>
+							<li>
+								<a href="/index/">
+									Home
+								</a>
+							</li>
+							<li>
+								<a href="/tools/">
+									Tools
+								</a>
+							</li>
+							<li>
+								<a href="/about/">
+									About
+								</a>
+							</li>
+							<li>
+								<a href="/posts/">
+									Blogs
+								</a>
+							</li>
+							<li>
+								<a href="/contact/">
+									Contacts
+								</a>
+							</li>
+						</ul>
+
+						<ul class="social-bottom">
+							<li>
+								<a href="www.facebook.com/akeemspencer">
+									<img src="/static/facebook-white.png" alt="facebook-icon"/>
+								</a>
+							</li>
+
+							<li>
+								<a href="www.twitter.com/dagen1us">
+									<img src="/static/twitter-white.png" alt="twitter-icon"/>
+								</a>
+							</li>
+
+							<li>
+								<a href="https://plus.google.com/"><img src="/static/google-white.png" alt="google-icon"/></a>
+							</li>
+						</ul>
+					</div>
+
+					<div class="network-column">
+						<h3>Ethical Sponsor Contacts</h3>
+						<ul>
+							<li>
+								<div class="tutorials">
+									New York Code & Design Academy
+								</div>
+							</li>
+							<li>
+								<div class="tutorials">
+									New York Javascript Forum
+								</div>
+							</li>
+							<li>
+								<div class="tutorials">
+									WordPress
+								</div>
+							</li>
+							<li>
+								<div class="tutorials">
+									The Loudest Megaphone
+								</div>
+							</li>
+							<li>
+								<div class="tutorials">
+									If You'd Like Some Good Experience With Coding Yourself, Here are some good tips and places to further your skills, depending substantially on the time you need to understand:
+									<a href="https://www.quora.com/What-are-the-best-sources-to-learn-web-coding-in-a-short-time">Coding References</a>
+								</div>
+							</li>
+						</ul>
+					</div>
+					<pre>
+						<code class="contactblock">
+							
+
+						</code>
+					</pre>
+					<p class="copyright">
+						Spencer Tech Consulting & Solutions is owned by Akeem Spencer, the CEO. 
+						@2016 All Rights Reserved 
+						<a href="#"> Privacy Policy & Terms of Service</a> 
+					</p>
+				</div>
+			</div>
+		
+	</div>
+		<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+		<script>
+
+		
+
+			$(document).ready(function(){
+				$('.contactblock').html("\n To become a contributer with me and help with recruiting on\n SEO training, contact (845)-598-6387. Would love to have front-end \n developers, back-end developers, technical developers, \n marketing, sales, and tech ops. Email the following address \n for possible client interaction with project success completions:  ");
+				$('.contactblock').append("\n\n\t\ E-Mail To: <a href=\" mailto: aspencerpsu@gmail.com\">aspencerpsu@gmail.com</a>");
+			});
+
+		</script>
+	</body>
+</html>

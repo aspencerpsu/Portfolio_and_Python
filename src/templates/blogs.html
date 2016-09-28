@@ -1,0 +1,41 @@
+<<html>
+	<head>
+		<title>Blogs</title>
+		<link rel="stylesheet" type="text/css" href="/static/blogs/graphics.css"/>
+		<meta charset="utf-8">
+		<meta name="viewport" contents="width=device-width, initial-scale=1">
+		<script src="/static/rest_framework/js/jquery-1.12.4.min.js"/>
+		
+	</head>
+</html>
+
+<div class="bloggsophere">
+	{% extends "index.html" %}
+	{% block title %}
+	{% endblock %}
+	{% block navi %}
+		<a href="{% url homepage_index%"}>Home's Page</a>-<a href="{url homepage_about}">About</a>
+		<a href="{% url homepage_contact %}">Contact</a>-<a href="{% url homepage_archive %}">Archive</a>
+
+			{% block content %}
+				<h3>Entries</h3>
+
+				{% for e in page.object_list%}
+					<div>{{e.title}}-{{e.created}}</div>
+						<div>{{e.text}}</div>
+						<br/>
+				{% endfor %}
+				{% if page.has_previous %}
+					<a href="?page{{page.previous_page_number}}">prev</a>
+				{% endif %}
+				
+				{% if page.has_next %}
+					<a href="?page{{ page.previous_page_number }}">next</a>
+				{% endif %}
+			{% endblock %}
+
+		{% block footer %}
+		2016-AkeemSpencer's Blogs
+		For more inquries or if you would like your own blog generated: contact Akeem
+		{% endblock %}
+</div>

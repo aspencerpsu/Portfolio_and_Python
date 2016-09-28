@@ -1,0 +1,162 @@
+#bs-example-navbar-collapse-1 {
+  margin-left: 295px;
+  margin-top: 135px;
+  width: 1000px; }
+
+.header {
+  background-color: #0b0a0a;
+  color: #ffffff;
+  width: 100%;
+  height: 200px;
+  opacity: 1;
+  position: absolute;
+  z-index: 80; }
+  .header nav {
+    transition: opacity, 1.485s;
+    width: 1000px;
+    height: 95px;
+    background-color: #0b0a0a;
+    position: absolute; }
+    .header nav .logo {
+      float: left; }
+    .header nav ul {
+      height: 100px; }
+      .header nav ul li {
+        transition: background-color, 1.5s;
+        display: inline-block;
+        font-size: 22px;
+        border: 20px hidden rgba(35, 41, 40, 0.75); }
+        .header nav ul li a {
+          color: white !important;
+          display: block !important; }
+          .header nav ul li a:hover {
+            text-decoration: none !important;
+            background-color: rgba(35, 41, 40, 0) !important; }
+        .header nav ul li:hover {
+          border: 20px hidden rgba(35, 41, 40, 0.75) !important;
+          border-radius: 50% !important;
+          background-color: rgba(35, 41, 40, 0.75) !important;
+          color: black !important;
+          padding: 30px !important; }
+
+.caption {
+  padding-left: 145px;
+  font-weight: 800;
+  font-family: Helvetica; }
+
+.down {
+  margin-top: 235px; }
+
+.footer {
+  padding: 22px; }
+
+.wrap {
+  margin: 0 auto;
+  width: 1140px; }
+
+.footer {
+  background: #4E4E4E url("http://www.developershed.com/images/footer-background.png") repeat;
+  width: 100%;
+  height: 450px;
+  margin: 41px 0 -30px 0; }
+  .footer ul li img {
+    vertical-align: middle;
+    max-width: 100%; }
+  .footer h3 {
+    color: #fff;
+    font-family: "ExoBold", san-serif;
+    font-weight: normal;
+    font-style: normal;
+    margin: 35px 0 0 5%; }
+  .footer .social-bottom {
+    margin: 117px 30% 0 0;
+    list-style: none;
+    font-family: "DroidSansRegular", san-serif;
+    font-weight: normal;
+    font-style: normal;
+    padding: 2px 6px 4px 6px;
+    float: right;
+    text-align: center; }
+    .footer .social-bottom li {
+      display: inline;
+      float: left;
+      padding-right: 5px; }
+      .footer .social-bottom li a {
+        color: #fff;
+        text-decoration: None; }
+  .footer .network-column {
+    width: 37%;
+    font-family: "DroidSansRegular", sans-serif;
+    font-weight: normal;
+    font-style: normal;
+    padding: 2px 6px 4px 6px;
+    float: right;
+    text-align: center;
+    color: #fff;
+    margin-top: -18px; }
+    .footer .network-column ul {
+      list-style: None;
+      list-style-type: None; }
+    .footer .network-column a {
+      color: #ffffff; }
+      .footer .network-column a:hover {
+        text-underline: none;
+        color: #337ab7; }
+  .footer .nav-column {
+    color: #fff;
+    text-align: right;
+    width: 18%;
+    float: left;
+    font-family: "DroidSansRegular", sans-serif;
+    font-weight: normal;
+    font-style: normal;
+    display: block;
+    margin-top: -48px; }
+    .footer .nav-column ul {
+      line-height: 160%;
+      margin: 70px 30% 0 0;
+      list-style: None;
+      list-style-type: None; }
+    .footer .nav-column a {
+      color: #fff; }
+  .footer a {
+    text-decoration: underline; }
+  .footer pre {
+    background-color: transparent !important;
+    border: 0px !important;
+    overflow: hidden !important; }
+    .footer pre code {
+      position: relative;
+      top: 0px;
+      background-color: #2d2d2d !important;
+      overflow-y: auto;
+      overflow-x: auto;
+      max-height: 420px;
+      color: #cccccc !important;
+      display: block;
+      vertical-align: baseline;
+      left: 28px;
+      line-height: 136%;
+      padding: 3px !important; }
+      .footer pre code a {
+        text-decoration: underline;
+        color: #cc99cc; }
+
+.copyright {
+  position: relative;
+  top: 50px;
+  font-size: 14px;
+  text-align: center;
+  color: #fff;
+  left: 150px;
+  display: block;
+  width: 700px;
+  padding-right: 118px;
+  padding-left: 235px; }
+  .copyright a {
+    color: #ffffff; }
+    .copyright a:hover {
+      text-decoration: none;
+      color: #337ab7; }
+
+/*# sourceMappingURL=404.css.map */

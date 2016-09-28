@@ -1,0 +1,96 @@
+{% load static %}
+
+<!-- DOCTYPE html -->
+<html>
+	<head>
+		<title>Blog Postings</title>
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/highlight.min.js"></script> 
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+		<link rel='stylesheet' href='{% static "base.css" %}' />
+		<style>
+			{% block style %}{% endblock style %}
+		</style>
+		<script>
+			(function(d, s, id) {
+				var js, fjs = d.getElementsByTagName(s)[0];
+				if (d.getElementById(id)) return;
+					js = d.createElement(s); js.id = id;
+					js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5";
+					fjs.parentNode.insertBefore(js, fjs);
+				}(document, 'script', 'facebook-jssdk'));
+		</script>
+
+		{% block head_extra %}{% endblock head_extra %}
+		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/styles/monokai-sublime.min.css">
+	</head>
+
+	<body>
+		{% include "messages_display.html" %}
+		<div class="container">
+			{% include "top-filler.html" %}
+			{% block content %}{% endblock content %}
+		</div>
+
+
+	
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.6/marked.js"></script>
+<script src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.6/marked.js"></script>
+<script>
+	$(document).ready(function() {
+ 
+	  	$('.content-markdown').each(function(i,block){
+	  		var content = $(this).text();
+	  		var trimmedcontent = content.trim();
+	  		console.log(trimmedcontent);
+	  		var markedcontent = marked(trimmedcontent);
+	  		$(this).html(markedcontent);
+	  		console.log(markedcontent);
+	  	});
+
+	  	 $('pre code').each(function(i, block) {
+    		hljs.highlightBlock(block);
+  		});
+
+	  	 $('.content-markdown img').each(function(){
+  			$(this).addClass("img-responsive");
+  		});
+
+	  	var titleValue = $("#id_title");
+    	$("#preview-title").text(titleValue.val());
+    	var inputValue = $("#id_content");
+
+    	function setPreview(){
+     	 	previewcontent = $('.content-preview').children();
+      		for (var i = previewcontent.length-1; i >= 0; i--) {
+        		var child = previewcontent[i];
+        		if (i == 1){
+          			titleValue.keyup(function(){
+            			thetext = marked($(this).val());
+            			classcontent = child.getAttribute("id");
+            			$("#"+classcontent).html(thetext);
+            		});
+        		}
+        		else {
+          			inputValue.keyup(function(){
+              			thetext = marked($(this).val());
+              			classcontent = child.getAttribute("id");
+              			$("#"+classcontent).html(thetext);
+           	 		});
+        		};
+      		};
+  		  };
+    
+    	setPreview();
+    });
+
+</script>
+
+</body>
+
+</html>
