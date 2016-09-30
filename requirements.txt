@@ -1,0 +1,8 @@
+Django==1.9
+Pillow==3.1.0
+psycopg2==2.6.1
+kombu.transport.django==3.0.35
+rest_framework==3.4.7
+crispy_forms==1.4.0
+pagedown==0.1.1
+markdown_deux==1.0.5
