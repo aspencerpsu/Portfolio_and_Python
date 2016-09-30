@@ -53,7 +53,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 
 ## PLACE THIS KEY IN THE SYSTEM ENVIRONMENT!
-SECRET_KEY = 'pn&8y9l8!8n9fq9*x=@qr^fm*7%j*3%a0%urg!e*(q&=cp!wkb'
+SECRET_KEY = os.environ.get("SECRET_DJANGO_WEBSITE_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -67,13 +67,14 @@ ALLOWED_INCLUDE_ROOTS = []
 
 ADMINS = ("Akeem Spencer", "aspencerpsu@gmail.com")
 
-AccessToken = "457888099-zEIwcezHpVbznLivoMfZ0dzXUgZdN8w3DfcFP1Kl"
 
-AccessTokenSecret = "cfsPMsazvavdOMQnZUoRUSVzoZHnmuyOv0Kw0UDP1kBSg"
+AccessToken = os.environ.get("TWITTER_PERSONAL_ACCESS_TOKEN")
 
-Consumer_Secret = " wOokX8k54HrrWEXGORnarOYzZFiISSVxT90xOJgvX3FcMUX0QB"
+ACCESS_TOKEN_SECRET = os.environ.get("TWITTER_PERSONAL_ACCESS_TOKEN_SECRET")
 
-Consumer_key = "pX0OETs87mPD0CROfEl5xNSKL"
+CONSUMER_SECRET = os.environ.get("TWITTER_PERSONAL_CONSUMER_SECRET")
+
+CONSUMER_KEY = os.environ.get("TWITTER_PERSONAL_CONSUMER_KEY")
 
 OWNER = "Dagen1ous"
 
@@ -81,11 +82,11 @@ OWNERID = 457888099
 
 oauth_nonce="1044602964"
 
-OAUTH_CONSUMER_KEY = "DC0sePOBbQ8bYdC8r4Smg"
+OAUTH_CONSUMER_KEY = os.environ.get("TWITTER_OAUTH_CONSUMER_KEY")
 
 OAUTH_SIGNATURE_METHOD="HMAC-SHA1"
 
-OAUTH_TOKEN="457888099-NTtTfXOZ4kJGHAqmp8Moigiq2hIVNCGy1VAFwDWd"
+OAUTH_TOKEN = os.environ.get("TWITTER_OAUTH_TOKEN")
 
 OAUTH_SIGNATURE="oi61wx1nzF2%2FiDRBD5QlDWPuYac%3D"
 
@@ -177,7 +178,7 @@ TEMPLATES = [
 #     'django.template.context_processors.static',
 # )
 
-INTERNAL_IPS = ["127.0.0.1"]
+INTERNAL_IPS = ["192.168.2.1"]
 
 FILE_CHARSET = 'utf-8'
 
