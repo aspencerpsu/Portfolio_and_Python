@@ -1,0 +1,20 @@
+h1 {
+    color: #777777;
+}
+
+.wmd-panel{
+	margin-left: 0px !important; /* setting the important tag creates
+	 the spec to supercede the original bootstrap class for this element */
+	 margin-right: 0px !important;
+}
+
+.logo_fixture {
+	position: fixed;
+	top: 20px;
+}
+
+.logo-placement{
+	position: absolute;
+	left: 27px;
+	top: -9px;
+}
