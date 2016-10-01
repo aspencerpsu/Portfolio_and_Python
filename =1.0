@@ -1,0 +1,9 @@
+Collecting markdown
+  Downloading Markdown-2.6.7.zip (413kB)
+Building wheels for collected packages: markdown
+  Running setup.py bdist_wheel for markdown: started
+  Running setup.py bdist_wheel for markdown: finished with status 'done'
+  Stored in directory: /home/mrspencer/.cache/pip/wheels/34/53/13/36d28723fa9a091576fbb516003d33085a114f35b823faf05e
+Successfully built markdown
+Installing collected packages: markdown
+Successfully installed markdown-2.6.7
