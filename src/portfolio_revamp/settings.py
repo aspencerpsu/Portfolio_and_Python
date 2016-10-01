@@ -112,7 +112,6 @@ INSTALLED_APPS = (
     'comments',
 
     # Third Party Apps
-    'twitter',
     'tweepy',
     'kombu.transport.django',
     # 'm2m_history',
@@ -121,7 +120,6 @@ INSTALLED_APPS = (
     'rest_framework',
     'crispy_forms',
     'pagedown',
-    'markdown_deux',
 
 )
 
