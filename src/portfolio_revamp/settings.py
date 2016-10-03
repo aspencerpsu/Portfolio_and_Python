@@ -225,13 +225,13 @@ LOGGING = {
 			'require_debug_false': {
 				'()': 'django.utils.log.RequireDebugFalse'
 			}
-		},
+		       },
 
 	    'handlers': {
 		'console': {
 			'class': 'logging.StreamHandler'
 			},
-		'file':{
+		'file': {
 			'level': 'DEBUG',
 			'class': 'logging.FileHandler',
 			'filename': os.path.join(BASE_DIR, "debug.log"),
@@ -239,7 +239,6 @@ LOGGING = {
 		'console': {
 				'level': 'INFO',
 				'class': 'logging.StreamHandler',
-				'formatter': 'simple'
 			},
 		'mail_admins': {
 				'level': 'ERROR',
@@ -250,23 +249,22 @@ LOGGING = {
 		},
 
 	   'loggers': {
-		'django': {
-				'handlers': ['file', 'console', 'mail_admin',]
+			'django': {
+				'handlers': ['file', 'console', 'mail_admins',],
 				'level': 'DEBUG',
 				'propagate': True,
 			},
-		},
-		'django.request': {
+			'django.request': {
 					'handlers': ['mail_admins'],
 					'level': 'WARNING',
 					'propagate': 'False',
-				},
-		},
-		'django.template': {
+			},
+			'django.template': {
 					'handlers': ['mail_admins'],
-					'level': 'DEBUG'
+					'level': 'DEBUG',
 					'propagate': 'True',
 				},
+			},
 }
 
 MIGRATION_MODULES = {'blog': 'blog.migrations', 'portfolio_revamp': None, 'employees': 'employees.migrations', }
