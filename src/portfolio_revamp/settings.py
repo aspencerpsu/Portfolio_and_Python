@@ -1,6 +1,8 @@
 if __name__ == "__main__" and __package__ == None:
     from sys import path
     from os.path import direname as dir
+    import django
+    django.setup()
     path.append(dir(path[0]))
     __package__ = "settings"
 
@@ -120,6 +122,7 @@ INSTALLED_APPS = (
     'rest_framework',
     'crispy_forms',
     'pagedown',
+    'gunicorn',
 
 )
 
@@ -176,7 +179,7 @@ TEMPLATES = [
 #     'django.template.context_processors.static',
 # )
 
-INTERNAL_IPS = ["192.168.2.1"]
+INTERNAL_IPS = ["127.0.0.1:8000",]
 
 FILE_CHARSET = 'utf-8'
 
@@ -200,6 +203,7 @@ DATABASES = {
         'client_encoding': 'UTF8',
         'default_transaction_isolation': 'read committed',
         'BROKER_URL': 'django://',
+	'timezone': 'UTC',
         'TEST': {
             'CHARSET': 'UTF8',
             'NAME': 'postgres',
@@ -214,9 +218,56 @@ DATABASES = {
 
 DATABASE_ROUTERS = []
 
-LOGGING = {500: True, 404: True}
+LOGGING = {
+	    'version': 1,
+	    'disable_existing_loggers': False,
+	    'filters': {
+			'require_debug_false': {
+				'()': 'django.utils.log.RequireDebugFalse'
+			}
+		},
 
-LOGGING_CONFIG = None
+	    'handlers': {
+		'console': {
+			'class': 'logging.StreamHandler'
+			},
+		'file':{
+			'level': 'DEBUG',
+			'class': 'logging.FileHandler',
+			'filename': os.path.join(BASE_DIR, "debug.log"),
+			},
+		'console': {
+				'level': 'INFO',
+				'class': 'logging.StreamHandler',
+				'formatter': 'simple'
+			},
+		'mail_admins': {
+				'level': 'ERROR',
+				'class': 'django.utils.log.AdminEmailHandler',
+				'filters': ['require_debug_false'],
+				'include_html': True,
+			       },
+		},
+
+	   'loggers': {
+		'django': {
+				'handlers': ['file', 'console', 'mail_admin',]
+				'level': 'DEBUG',
+				'propagate': True,
+			},
+		},
+		'django.request': {
+					'handlers': ['mail_admins'],
+					'level': 'WARNING',
+					'propagate': 'False',
+				},
+		},
+		'django.template': {
+					'handlers': ['mail_admins'],
+					'level': 'DEBUG'
+					'propagate': 'True',
+				},
+}
 
 MIGRATION_MODULES = {'blog': 'blog.migrations', 'portfolio_revamp': None, 'employees': 'employees.migrations', }
 
@@ -304,7 +355,7 @@ PREPEND_WWW = False
 
 APPEND_SLASH = True
 
-MEDIA_ROOT="c:/Python27/Lib/site-packages/django/bin/portfolio_revamp/MEDIA_REP"
+MEDIA_ROOT=os.path.join(os.path.dirname(BASE_DIR), "media")
 
 MEDIA_URL="/media/"
 
