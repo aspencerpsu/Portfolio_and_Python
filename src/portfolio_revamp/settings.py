@@ -234,7 +234,7 @@ LOGGING = {
 		'file': {
 			'level': 'DEBUG',
 			'class': 'logging.FileHandler',
-			'filename': os.path.join(BASE_DIR, "debug.log"),
+			'filename': os.path.join(os.path.dirname(BASE_DIR), "debug.log"),
 			},
 		'console': {
 				'level': 'INFO',
@@ -257,12 +257,12 @@ LOGGING = {
 			'django.request': {
 					'handlers': ['mail_admins'],
 					'level': 'WARNING',
-					'propagate': 'False',
+					'propagate': False,
 			},
 			'django.template': {
 					'handlers': ['mail_admins'],
 					'level': 'DEBUG',
-					'propagate': 'True',
+					'propagate': True,
 				},
 			},
 }
@@ -353,7 +353,7 @@ PREPEND_WWW = False
 
 APPEND_SLASH = True
 
-MEDIA_ROOT=os.path.join(os.path.dirname(BASE_DIR), "media")
+MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "media")
 
 MEDIA_URL="/media/"
 
