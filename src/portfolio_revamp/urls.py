@@ -24,7 +24,7 @@ from portfolio_revamp.views import index
 # from portfolio_revamp .views import home_twitter_feed
 import settings
 from django.conf.urls import handler404, handler500
-
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 sys.dont_write_bytecode = True
 
 urlpatterns = [url(r'^admin/', include(admin.site.urls)), 
@@ -32,6 +32,8 @@ urlpatterns = [url(r'^admin/', include(admin.site.urls)),
 				url(r'^index/$', index),
 				# url(r'^blogs/$', blogs),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+urlpatterns += staticfiles_urlpatterns()
 
 # if settings.DEBUG:
 #     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

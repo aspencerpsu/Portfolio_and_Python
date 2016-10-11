@@ -76,3 +76,8 @@ pydoc () {
 if [ -n "${BASH-}" ] || [ -n "${ZSH_VERSION-}" ] ; then
     hash -r 2>/dev/null
 fi
+
+#LETS GO AHEAD AND ADD THE VARIABLE SECRET AT THE END OF THIS SHELL FILE
+
+export SECRET_DJANGO_WEBSITE_KEY='pn&8y918!8n9fq*x=@qr^fm*7%j*3%0%urg!e*(q&=cp!wkb'
+
