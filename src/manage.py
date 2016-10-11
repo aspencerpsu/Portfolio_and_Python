@@ -9,6 +9,8 @@ from django.core.management import execute_from_command_line
 
 #settings = LazySettings()
 if __name__ == "__main__":
+	import django
+	django.setup()
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "portfolio_revamp.settings")
     import django
     django.setup()
