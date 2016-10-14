@@ -1,7 +1,0 @@
-$ workon venv
-
-$ cat $VIRTUAL_ENV/bin/postactivate
-#!/bin/bash
-# This hook is run after virtualenv is activated
-
-export SECRET_DJANGO_WEBSITE_KEY='pn&8y918!8n9fq*x=@qr^fm*7%j*3%0%urg!e*(q&=cp!wkb'

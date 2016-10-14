@@ -26,7 +26,6 @@ import psycopg2
 import sys
 import gettext
 import locale
-from django.conf import locale as site_locale
 
 current_locale, encoding = locale.getdefaultlocale()
 
@@ -42,7 +41,7 @@ ABSOLUTE_URL_OVERRIDES = {}
 
 AUTH_USER_MODEL = 'auth.User'
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath('.')))
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 # Quick-start development settings - unsuitable for production
@@ -54,16 +53,14 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath('.')))
 SECRET_KEY = os.environ.get("SECRET_DJANGO_WEBSITE_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = os.environ.get("DJANGO_DEBUG") == 0 # will result in false due to the 1 0 conditionality
 
-SITE_ID = 1
-
-ALLOWED_HOSTS = ['127.0.0.1', '100.2.190.48', ]
+ALLOWED_HOSTS = ['159.203.121.150', ]
 
 ALLOWED_INCLUDE_ROOTS = []
 
 
-ADMINS = ("Akeem Spencer", "aspencerpsu@gmail.com")
+ADMINS = [("Akeem Spencer", "aspencerpsu@gmail.com"), ]
 
 
 AccessToken = os.environ.get("TWITTER_PERSONAL_ACCESS_TOKEN")
@@ -98,8 +95,8 @@ INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
-    'django.contrib.sites',
     'django.contrib.messages',
+    'django.contrib.sites',
     'django.contrib.staticfiles',
     'django.contrib.admindocs',
     'django.contrib.postgres.operations',
@@ -162,21 +159,6 @@ TEMPLATES = [
     },
 ]
 
-# TEMPLATE_DIRS = []
-
-# TEMPLATE_CONTEXT_PROCESSORS = (
-#     'django.contrib.auth.context_processors.auth',
-#     'django.template.context_processors.request',
-#     'django.template.context_processors.debug',
-#     'django.contrib.messages.context_processors.messages',
-#     'django.template.context_processors.tz',
-#     'django.template.context_processors.i18n',
-#     'django.template.context_processors.media',
-#     'django.template.context_processors.static',
-# )
-
-INTERNAL_IPS = ["127.0.0.1", "0.0.0.0",]
-
 FILE_CHARSET = 'utf-8'
 
 FORMAT_MODULE_PATH = None
@@ -190,16 +172,13 @@ ADMIN_MEDIA_PREFIX = '/media/'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'postgres',
-        'USER': 'postgres',
+        'NAME': 'spencertechconsultingsolutions',
+        'USER': 'akeem',
         'PASSWORD': 'd0mainframe',
         'HOST': 'localhost',
-        'PORT': '3005',
-        'CONN_MAX_AGE': None,
-        'client_encoding': 'UTF8',
-        'default_transaction_isolation': 'read committed',
+        'PORT': '',
+        #'CONN_MAX_AGE': None,
         'BROKER_URL': 'django://',
-	'timezone': 'UTC',
         'TEST': {
             'CHARSET': 'UTF8',
             'NAME': 'postgres',
@@ -212,7 +191,7 @@ DATABASES = {
     }
 }
 
-DATABASE_ROUTERS = []
+LOGGING_CONFIG = 'logging.config.dictConfig'
 
 LOGGING = {
 	    'version': 1,
@@ -263,8 +242,6 @@ LOGGING = {
 			},
 }
 
-LOGGING_CONFIG = 'logging.config.dictConfig'
-
 MIGRATION_MODULES = {'blog': 'blog.migrations', 'portfolio_revamp': None, 'employees': 'employees.migrations', }
 
 CACHES = {
@@ -277,7 +254,7 @@ CACHES = {
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'EST'
 
 USE_I18N = False
 
@@ -318,6 +295,8 @@ SECURE_REDIRECT_EXEMPT = []
 SECURE_SSL_HOST = None
 SECURE_SSL_REDIRECT = False
 SECURE_PROXY_SSL_HEADER = None
+
+SITE_ID = 2
 
 DEBUG_PROPAGATE_EXCEPTIONS = False
 

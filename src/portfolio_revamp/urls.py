@@ -19,9 +19,11 @@ import sys
 from django.conf.urls import include, url
 from django.contrib import admin
 from django.conf.urls.static import static
-from portfolio_revamp.views import sometext
-from portfolio_revamp.views import index
-# from portfolio_revamp .views import home_twitter_feed
+
+#import everything from the main app src's url constructor.
+
+from portfolio_revamp.views import *
+
 import settings
 from django.conf.urls import handler404, handler500
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
@@ -29,7 +31,7 @@ sys.dont_write_bytecode = True
 
 urlpatterns = [url(r'^admin/', include(admin.site.urls)), 
 			    url(r'^posts/', include("posts.urls", namespace='posts')),
-				url(r'^index/$', index),
+				url(r'^$', home),
 				# url(r'^blogs/$', blogs),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
