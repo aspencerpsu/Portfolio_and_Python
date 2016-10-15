@@ -61,7 +61,7 @@ def post_detail(request, slug=None):
 		"share_string": share_string,
 		# "comments": comments,
 		"timeshare": str(timeshare),
-		"proxy_detail": re.match("^(/posts/){1}(\w+\-?)+/$", str(request.get_raw_uri())[21:]),
+		"proxy_detail": re.match("^(/posts/){1}(\w+\-?)+/$", str(request.path)),
 	}
 
 	return render(request, "post_detail.html", context)
@@ -98,7 +98,8 @@ def post_list(request):
 		"title": "List",
 		"page_request_var": page_request_var,
 		"today": today,
-		"proxy_list": re.match("(/posts/)", str(request.get_raw_uri())[21:]),
+		"proxy_list": re.match("(/posts/)", str(request.path)),
+		"post_cutoff": str(request.path),
 	}
 	return render(request, "post_list.html", context)
 
