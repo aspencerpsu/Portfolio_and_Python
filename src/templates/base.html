@@ -10,8 +10,12 @@
 		<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/highlight.min.js"></script> 
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
 		<link rel='stylesheet' href='{% static "base.css" %}' />
-		<style>
-			{% block style %}{% endblock style %}
+		
+			{% if post_cutoff == "/posts/" %}
+				<link rel='stylesheet' href='{% static "posts/post_visuals.css" %}' /l>
+			{% endif %}
+			<style>
+				{% block style %}{% endblock style %}
 		</style>
 		<script>
 			(function(d, s, id) {
