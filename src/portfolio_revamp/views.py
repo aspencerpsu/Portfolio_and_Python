@@ -9,11 +9,11 @@ from django.template import RequestContext
 from django.conf.urls import handler404, handler500
 
 
-from blogs.models import Blogs
+#from blogs.models import Blogs
 from tweepy import API
 import tweepy
 
-sys.path.append("C:/Python27/Lib/site-packages/django/bin/")
+#sys.path.append("C:/Python27/Lib/site-packages/django/bin/")
 
 auth = tweepy.OAuthHandler("pX0OETs87mPD0CROfEl5xNSKL", "wOokX8k54HrrWEXGORnarOYzZFiISSVxT90xOJgvX3FcMUX0QB")
 
@@ -25,7 +25,7 @@ def sometext(request):
 	return render_to_response('samplehtml.html', {'owner': 'John Marcellus', 'books':'The Kiterunner', 'author':'Khaled Hosseini'})
 
 
-def index(request):
+def home(request):
 	index = open(r'templates/home.html').read()
 	last_5 = api.user_timeline(457888099, None, None, 6, None)
 	second_tweet = last_5[1]

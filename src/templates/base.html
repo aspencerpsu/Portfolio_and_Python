@@ -10,8 +10,12 @@
 		<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/highlight.min.js"></script> 
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
 		<link rel='stylesheet' href='{% static "base.css" %}' />
-		<style>
-			{% block style %}{% endblock style %}
+		
+			{% if post_cutoff == "/posts/" %}
+				<link rel='stylesheet' href='{% static "posts/post_visuals.css" %}' /l>
+			{% endif %}
+			<style>
+				{% block style %}{% endblock style %}
 		</style>
 		<script>
 			(function(d, s, id) {
@@ -25,13 +29,18 @@
 
 		{% block head_extra %}{% endblock head_extra %}
 		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/styles/monokai-sublime.min.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
 	</head>
 
 	<body>
 		{% include "messages_display.html" %}
 		<div class="container">
 			{% include "top-filler.html" %}
+			<div class="row">
 			{% block content %}{% endblock content %}
+			</div>
 		</div>
 
 

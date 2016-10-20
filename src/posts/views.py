@@ -31,7 +31,11 @@ def post_create(request):
 	if form.is_valid():
 		instance = form.save(commit=False)
 		instance.user = request.user
+		if instance.image.url:
+			instance.share = '<meta property="og:image" content="/static/img/%s"'%instance.image.url
 		instance.save()
+		else:
+			instance.save()
 		# message success
 		messages.success(request, "Successfully Created")
 		return HttpResponseRedirect(instance.get_absolute_url())
@@ -61,7 +65,7 @@ def post_detail(request, slug=None):
 		"share_string": share_string,
 		# "comments": comments,
 		"timeshare": str(timeshare),
-		"proxy_detail": re.match("^(/posts/){1}(\w+\-?)+/$", str(request.get_raw_uri())[21:]),
+		"proxy_detail": re.match("^(/posts/){1}(\w+\-?)+/$", str(request.path)),
 	}
 
 	return render(request, "post_detail.html", context)
@@ -80,7 +84,7 @@ def post_list(request):
 				Q(user__first_name__icontains=query) |
 				Q(user__last_name__icontains=query)
 				).distinct()
-	paginator = Paginator(queryset_list, 8) # Show 25 contacts per page
+	paginator = Paginator(queryset_list, 8) # Show 8 contacts per page
 	page_request_var = "page"
 	page = request.GET.get(page_request_var)
 	try:
@@ -98,7 +102,8 @@ def post_list(request):
 		"title": "List",
 		"page_request_var": page_request_var,
 		"today": today,
-		"proxy_list": re.match("(/posts/)", str(request.get_raw_uri())[21:]),
+		"proxy_list": re.match("(/posts/)", str(request.path)),
+		"post_cutoff": str(request.path),
 	}
 	return render(request, "post_list.html", context)
 
