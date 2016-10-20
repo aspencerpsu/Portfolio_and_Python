@@ -27,6 +27,7 @@ from portfolio_revamp.views import *
 import settings
 from django.conf.urls import handler404, handler500
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+
 sys.dont_write_bytecode = True
 
 urlpatterns = [url(r'^admin/', include(admin.site.urls)), 
@@ -40,6 +41,6 @@ urlpatterns += staticfiles_urlpatterns()
 # if settings.DEBUG:
 #     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 #     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
+urlpatterns += staticfiles_urlpatterns()
 handler404 = "portfolio_revamp.views.page_cannot_load"
 

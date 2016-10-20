@@ -13,4 +13,4 @@ def app(environ, start_response):
 	log.info("Information!")
 	log.warn("Warning!")
 	log.error("ERROR PROCESSED!")
-	return ["\nCHECK SETTINGS WITHIN FRAMEWORK\n"
+	return ["\nCHECK SETTINGS WITHIN FRAMEWORK\n"]

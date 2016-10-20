@@ -31,7 +31,11 @@ def post_create(request):
 	if form.is_valid():
 		instance = form.save(commit=False)
 		instance.user = request.user
+		if instance.image.url:
+			instance.share = '<meta property="og:image" content="/static/img/%s"'%instance.image.url
 		instance.save()
+		else:
+			instance.save()
 		# message success
 		messages.success(request, "Successfully Created")
 		return HttpResponseRedirect(instance.get_absolute_url())
@@ -80,7 +84,7 @@ def post_list(request):
 				Q(user__first_name__icontains=query) |
 				Q(user__last_name__icontains=query)
 				).distinct()
-	paginator = Paginator(queryset_list, 8) # Show 25 contacts per page
+	paginator = Paginator(queryset_list, 8) # Show 8 contacts per page
 	page_request_var = "page"
 	page = request.GET.get(page_request_var)
 	try:

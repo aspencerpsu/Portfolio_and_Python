@@ -53,6 +53,7 @@ class Post(models.Model):
 	readtime = models.TimeField(null=True)
 	updated = models.TimeField(auto_now_add=True)
 	timestamp = models.DateTimeField(auto_now_add=True)
+	share=models.CharField(max_length=4000, default="<meta property=\"og:image\" content=\"/static/img/emblemmatic-spencer-tech-consulting-&-solutions-logo-60.png\"")
 
 	objects = PostManager()
 
@@ -72,6 +73,10 @@ class Post(models.Model):
 		instance = self
 		qs = Comment.object.filter_by_instance(instance)
 		return qs
+
+	def get_fb_meta_share(self):
+		instance = self
+		print instance.share
 
 def create_slug(instance, new_slug=None):
 	slug = slugify(instance.title)

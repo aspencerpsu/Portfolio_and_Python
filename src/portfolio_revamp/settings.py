@@ -55,7 +55,7 @@ SECRET_KEY = os.environ.get("SECRET_DJANGO_WEBSITE_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get("DJANGO_DEBUG") == 0 # will result in false due to the 1 0 conditionality
 
-ALLOWED_HOSTS = ['159.203.121.150', '127.0.0.1', 'localhost', ]
+ALLOWED_HOSTS = ['159.203.121.150', 'localhost', ]
 
 ALLOWED_INCLUDE_ROOTS = []
 
@@ -175,7 +175,7 @@ DATABASES = {
         'NAME': 'spencertechconsultingsolutions',
         'USER': 'akeem',
         'PASSWORD': 'd0mainframe',
-        'HOST': 'localhost',
+        'HOST': '159.203.121.150',
         'PORT': '',
         #'CONN_MAX_AGE': None,
         'BROKER_URL': 'django://',
