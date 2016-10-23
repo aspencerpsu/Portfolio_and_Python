@@ -31,14 +31,12 @@ def post_create(request):
 	if form.is_valid():
 		instance = form.save(commit=False)
 		instance.user = request.user
-		if instance.image.url:
-			instance.share = '<meta property="og:image" content="/static/img/%s"'%instance.image.url
-		instance.save()
-		else:
-			instance.save()
+		#change the state of the share grid for post
 		# message success
+		instance.save()
 		messages.success(request, "Successfully Created")
 		return HttpResponseRedirect(instance.get_absolute_url())
+
 	context = {
 		"form": form,
 	}
@@ -64,6 +62,7 @@ def post_detail(request, slug=None):
 		"instance": instance,
 		"share_string": share_string,
 		# "comments": comments,
+		"has_image": instance.image.__bool__(),
 		"timeshare": str(timeshare),
 		"proxy_detail": re.match("^(/posts/){1}(\w+\-?)+/$", str(request.path)),
 	}

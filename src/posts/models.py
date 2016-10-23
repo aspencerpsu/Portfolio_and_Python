@@ -13,9 +13,6 @@ from .utils import *
 
 # MVC MODEL VIEW CONTROLLER
 
-#Post.objects.all()
-#Post.objects.create(user=user, title="some title")
-
 class PostManager(models.Manager):
 	def active(self, *args, **kwargs):
 		#Post.objects.all() = super(PostManager, self).all()
@@ -41,7 +38,7 @@ class Post(models.Model):
 	title = models.CharField(max_length=120)
 	slug = models.SlugField(unique=True)
 	image = models.ImageField(upload_to=upload_location,
-								null=False,
+								null=True,
 								blank=True,
 								width_field="width_field",
 								height_field="height_field")
@@ -53,8 +50,6 @@ class Post(models.Model):
 	readtime = models.TimeField(null=True)
 	updated = models.TimeField(auto_now_add=True)
 	timestamp = models.DateTimeField(auto_now_add=True)
-	share=models.CharField(max_length=4000, default="<meta property=\"og:image\" content=\"/static/img/emblemmatic-spencer-tech-consulting-&-solutions-logo-60.png\"")
-
 	objects = PostManager()
 
 	def __unicode__(self):
@@ -73,10 +68,6 @@ class Post(models.Model):
 		instance = self
 		qs = Comment.object.filter_by_instance(instance)
 		return qs
-
-	def get_fb_meta_share(self):
-		instance = self
-		print instance.share
 
 def create_slug(instance, new_slug=None):
 	slug = slugify(instance.title)

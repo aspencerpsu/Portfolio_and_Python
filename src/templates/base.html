@@ -14,8 +14,8 @@
 			{% if post_cutoff == "/posts/" %}
 				<link rel='stylesheet' href='{% static "posts/post_visuals.css" %}' /l>
 			{% endif %}
-			<style>
-				{% block style %}{% endblock style %}
+		<style>
+			{% block style %}{% endblock style %}
 		</style>
 		<script>
 			(function(d, s, id) {
@@ -31,7 +31,7 @@
 		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/styles/monokai-sublime.min.css">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-
+		{% block meta_facebook %} {% endblock meta_facebook %}
 	</head>
 
 	<body>

@@ -175,9 +175,8 @@ DATABASES = {
         'NAME': 'spencertechconsultingsolutions',
         'USER': 'akeem',
         'PASSWORD': 'd0mainframe',
-        'HOST': '159.203.121.150',
-        'PORT': '',
-        #'CONN_MAX_AGE': None,
+        'HOST': 'localhost',
+        'POST': '',
         'BROKER_URL': 'django://',
         'TEST': {
             'CHARSET': 'UTF8',
@@ -203,9 +202,7 @@ LOGGING = {
 		       },
 
 	    'handlers': {
-		'console': {
-			'class': 'logging.StreamHandler'
-			},
+
 		'file': {
 			'level': 'DEBUG',
 			'class': 'logging.FileHandler',
@@ -218,7 +215,6 @@ LOGGING = {
 		'mail_admins': {
 				'level': 'ERROR',
 				'class': 'django.utils.log.AdminEmailHandler',
-				'filters': ['require_debug_false'],
 				'include_html': True,
 			       },
 		},
@@ -230,19 +226,19 @@ LOGGING = {
 				'propagate': True,
 			},
 			'django.request': {
-					'handlers': ['mail_admins'],
+					'handlers': ['mail_admins', 'console', 'file',],
 					'level': 'WARNING',
 					'propagate': False,
 			},
 			'django.template': {
-					'handlers': ['mail_admins'],
+					'handlers': ['mail_admins', 'console', 'file',],
 					'level': 'DEBUG',
 					'propagate': True,
 				},
 			},
 }
 
-MIGRATION_MODULES = {'blog': 'blog.migrations', 'portfolio_revamp': None, 'employees': 'employees.migrations', }
+MIGRATION_MODULES = {'blog': 'blog.migrations', 'portfolio_revamp': None, 'employees': 'employees.migrations', 'post': 'posts.migrations',}
 
 CACHES = {
     'default': {
