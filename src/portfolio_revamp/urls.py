@@ -38,9 +38,10 @@ urlpatterns = [url(r'^admin/', include(admin.site.urls)),
 
 urlpatterns += staticfiles_urlpatterns()
 
+#urlpatterns.append(url(r'^media/(?P<path>.*)$', include("../ ))
 # if settings.DEBUG:
 #     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 #     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-urlpatterns += staticfiles_urlpatterns()
+
 handler404 = "portfolio_revamp.views.page_cannot_load"
 

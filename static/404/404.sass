@@ -11,6 +11,8 @@
 	opacity: 1
 	position: absolute
 	z-index: 80
+	top: 0
+	left: 0
 	
 	nav
 		transition: opacity, 1.485s
@@ -21,6 +23,7 @@
 
 		.logo
 			float: left
+			margin-top: -153px
 		ul
 			height: 100px
 
@@ -29,10 +32,12 @@
 				display: inline-block
 				font-size: 22px
 				border: 20px hidden rgba(35, 41, 40, 0.75)
+				padding-left: 35px
 
 				a 
 					color: white !important
 					display: block !important
+					text-decoration: none
 
 					&:hover
 						text-decoration: none !important
@@ -44,6 +49,15 @@
 					background-color: rgba(35, 41, 40, 0.75) !important
 					color: black !important
 					padding: 30px !important
+
+
+.container
+	margin: 0 auto
+	width: 500px
+	height: auto
+
+
+
 .caption
 	padding-left: 145px
 	font-weight: 800
@@ -171,11 +185,11 @@
 	font-size: 14px
 	text-align: center
 	color: #fff
-	left: 150px
+	left: -10px
 	display: block
 	width: 700px
 	padding-right: 118px
-	padding-left: 235px
+	padding-left: 215px
 
 	a
 		color: #ffffff
