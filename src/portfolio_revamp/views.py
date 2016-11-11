@@ -21,18 +21,14 @@ auth.set_access_token("457888099-zEIwcezHpVbznLivoMfZ0dzXUgZdN8w3DfcFP1Kl", "cfs
 
 api = tweepy.API(auth)
 
-def sometext(request):
-	return render_to_response('samplehtml.html', {'owner': 'John Marcellus', 'books':'The Kiterunner', 'author':'Khaled Hosseini'})
-
-
-def home(request):
+def main(request):
 	index = open(r'templates/home.html').read()
 	last_5 = api.user_timeline(457888099, None, None, 6, None)
 	second_tweet = last_5[1]
 	# paginator = Paginator([Blogs.objects.first()], 1)
 
 	# page = paginator.page(1)
-	return render(request, "home.html", {"last_5": last_5, "second_tweet": second_tweet})
+	return render(request, "main.html", {"last_5": last_5, "second_tweet": second_tweet})
 
 def listing(request):
 	contact_list = Contacts.objects.all()
@@ -48,6 +44,14 @@ def listing(request):
 		#If page is out of range (e.g. 9999), deliver last page of results
 		contacts = paginator.page(paginator.num_pages)
 	return render(request, 'list.html', {'contacts': contacts})
+
+def about(request):
+	"""The following will have some testimonials of what I've done
+	   and also showcase current projects I'm working on"""
+	
+	return render(request, 'about.html')
+
+
 
 def page_cannot_load(request):
 
