@@ -55,7 +55,7 @@ SECRET_KEY = os.environ.get("SECRET_DJANGO_WEBSITE_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get("DJANGO_DEBUG") == 0 # will result in false due to the 1 0 conditionality
 
-ALLOWED_HOSTS = ['159.203.121.150', 'localhost', ]
+ALLOWED_HOSTS = ['159.203.121.150', 'localhost', 'spencertechconsulting.com', ]
 
 ALLOWED_INCLUDE_ROOTS = []
 
@@ -190,53 +190,53 @@ DATABASES = {
     }
 }
 
-LOGGING_CONFIG = 'logging.config.dictConfig'
+# LOGGING_CONFIG = 'logging.config.dictConfig'
 
-LOGGING = {
-	    'version': 1,
-	    'disable_existing_loggers': False,
-	    'filters': {
-			'require_debug_false': {
-				'()': 'django.utils.log.RequireDebugFalse'
-			}
-		       },
-
-	    'handlers': {
-
-		'file': {
-			'level': 'DEBUG',
-			'class': 'logging.FileHandler',
-			'filename': os.path.join(os.path.dirname(BASE_DIR), "debug.log"),
-			},
-		'console': {
-				'level': 'INFO',
-				'class': 'logging.StreamHandler',
-			},
-		'mail_admins': {
-				'level': 'ERROR',
-				'class': 'django.utils.log.AdminEmailHandler',
-				'include_html': True,
-			       },
-		},
-
-	   'loggers': {
-			'django': {
-				'handlers': ['file', 'console', 'mail_admins',],
-				'level': 'DEBUG',
-				'propagate': True,
-			},
-			'django.request': {
-					'handlers': ['mail_admins', 'console', 'file',],
-					'level': 'WARNING',
-					'propagate': False,
-			},
-			'django.template': {
-					'handlers': ['mail_admins', 'console', 'file',],
-					'level': 'DEBUG',
-					'propagate': True,
-				},
-			},
-}
+#LOGGING = {
+#	    'version': 1,
+#	    'disable_existing_loggers': False,
+#	    'filters': {
+#			'require_debug_false': {
+#				'()': 'django.utils.log.RequireDebugFalse'
+#			}
+#		       },
+#
+#	    'handlers': {
+#
+#		'file': {
+#			'level': 'DEBUG',
+#			'class': 'logging.FileHandler',
+#			'filename': os.path.join(os.path.dirname(BASE_DIR), "debug.log"),
+#			},
+#		'console': {
+#				'level': 'INFO',
+#				'class': 'logging.StreamHandler',
+#			},
+#		'mail_admins': {
+#				'level': 'ERROR',
+#				'class': 'django.utils.log.AdminEmailHandler',
+#				'include_html': True,
+#			       },
+#		},
+#
+#	   'loggers': {
+#			'django': {
+#				'handlers': ['file', 'console', 'mail_admins',],
+#				'level': 'DEBUG',
+#				'propagate': True,
+#			},
+#			'django.request': {
+#					'handlers': ['mail_admins', 'console', 'file',],
+#					'level': 'WARNING',
+#					'propagate': False,
+#			},
+#			'django.template': {
+#					'handlers': ['mail_admins', 'console', 'file',],
+#					'level': 'DEBUG',
+#					'propagate': True,
+#				},
+#			},
+#}
 
 MIGRATION_MODULES = {'blog': 'blog.migrations', 'portfolio_revamp': None, 'employees': 'employees.migrations', 'post': 'posts.migrations',}
 
