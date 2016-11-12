@@ -1,0 +1,6 @@
+*.pyc
+*.h
+.sass-cache
+ny/
+settings.py
+manage.py
