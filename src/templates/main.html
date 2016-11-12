@@ -1,0 +1,92 @@
+{% extends "home.html" %}
+{% block inside %}
+			<div class="row">
+				<div class="bar">
+					<div class="wrap">
+					
+				
+						<div class="frame">
+
+						</div>
+
+						<div class="action-container">
+
+						<h2 class="action">
+							Spencer Tech Consulting & Solutions offers entrepreneurs, bootstrappers, venture capitalists and thriving business owners alike product services featuring IT Solutions, Programming Techniques, Server Maintenance and E-Commerce businesses for a flat-rate, inexpensive setup.
+						</h2>
+						</div>
+
+
+				</div>
+			</div>
+
+		<div class="row clearfix">
+			<div class="twitter-column">
+
+                                <!-- Remember this Twitter column is located in the row above and the position is skewed upward.....see the style.sass sheet and the graphics.css sheet.  -->
+                                                <h3><strong>Twitter Feed &nbsp</strong>
+                                                        <a href="http://twitter.com/akeemspencer" target="_blank"><img src="/static/twitter.png" alt=""></a></h3>
+                                                <div class="twitter-feed">
+                                                        <div id="tweets">
+
+                                                                {% block title %}Recent Tweets{% endblock %}
+
+                                                                {% block non_retweets %}
+                                                                <ul>
+                                                                        {% for tweet in last_5 %}
+                                                                                <li>&nbsp&nbsp&nbsp&nbsp&nbsp{{ tweet.text }}<a href="https://www.twitter.com/status/{{ tweet.id_str }}">{% if tweet.retweeted %} RT {% endif %} See Tweet</a>
+
+                                                                                </li>
+                                                                        {% endfor %}
+                                                                </ul>
+                                                                {% endblock %}
+                                                                <!-- .......
+                                                                A break -->
+                                                        </div>
+
+
+                                                </div>
+                              </div>
+{% endblock %}
+{% block script %}
+
+<script>
+	/* create a link tank that works with bootstrap, once in mobile */
+	var bootstrap3 = document.createElement('link');
+	var bootstraptheme = document.createElement("link");
+	bootstraptheme.setAttribute("rel", "stylesheet");
+	bootstraptheme.setAttribute("href", "/static/portfolio_revamp/bootstraptheme.css");
+	var bootstrapjs = document.createElement("script");
+	bootstrapjs.setAttribute("src", "/static/portfolio_revamp/bootstrapjs.js");
+	bootstrap3.setAttribute("rel", "stylesheet");
+	bootstrap3.setAttribute("href", "/static/portfolio_revamp/bootstrap.css");
+	$(document).ready(function(){
+		$('.contactblock').html("\n To become a contributer with me and help with recruiting on\n SEO training, contact (845)-598-6387. Would love to have front-end \n developers, back-end developers, technical developers, \n marketing, sales, and tech ops. Email the following address \n for possible client interaction with project success completions:  ");
+
+		$('.contactblock').append("\n\n\t\  E-Mail To: <a href=\"mailto:aspencerpsu@gmail.com\">aspencerpsu@gmail.com</a>");
+		if (window.innerWidth <= 415 || document.body.clientWidth <= 415) {
+			var new_node = document.getElementsByTagName("nav")[0].cloneNode(true);
+			var new_ul = document.getElementById("selections");
+			new_ul.appendChild(new_node);
+			$('header > nav').remove();
+			
+			enlist = document.getElementsByTagName('code')[0].cloneNode(true);
+
+			$('pre').remove();
+			document.getElementsByClassName('enlist')[0].appendChild(enlist);	
+
+		}
+
+		else {
+			$('.menu').css("display", "none");
+		};
+		
+		$('.collapsed').click(function(){
+			
+			$('#selections').toggle(1000);
+		});
+		
+
+	});
+</script>
+{% endblock script %}
