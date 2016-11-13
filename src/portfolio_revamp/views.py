@@ -7,7 +7,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render
 from django.template import RequestContext
 from django.conf.urls import handler404, handler500
-
+from django.views.decorators.clickjacking import xframe_options_exempt
 
 #from blogs.models import Blogs
 from tweepy import API
@@ -45,6 +45,8 @@ def listing(request):
 		contacts = paginator.page(paginator.num_pages)
 	return render(request, 'list.html', {'contacts': contacts})
 
+
+@xframe_options_exempt
 def about(request):
 	"""The following will have some testimonials of what I've done
 	   and also showcase current projects I'm working on"""
