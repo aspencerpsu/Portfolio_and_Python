@@ -21,6 +21,7 @@ from django.utils import timezone
 from .forms import PostForm
 from .models import Post
 from .utils import *
+from django.http import HttpResponse
 
 # Create your views here.
 def post_create(request):
