@@ -1,19 +1,25 @@
 @media (min-width: 435px) {
-  #quotes {
-    background-image: url("media/BIGASSQUOTES.JPG");
-    background-size: contain;
-    width: 100px;
-    height: 100px;
+  .quotes {
+    width: 70px;
+    height: 70px;
+    position: relative;
+    right: 60px;
   }
 
-  #endquotes {
-    background-image: url("media/BIGASSQUOTES.JPG");
-    background-size: contain;
+  #start {
+    transform: rotate(180deg);
+    margin-bottom: -20px;
+    margin-left: -9px;
+  }
+
+  #end {
+    transfrom: rotate(-180deg);
+    margin-left: 585px;
+    margin-top: -15px;
   }
 
   #projects {
     font-family: "DroidSansRegular", sans-serif;
-    max-width: 1920px;
     padding-left: 120px;
     margin: 100px;
     position: relative;
@@ -24,10 +30,69 @@
   }
 
   .papers {
-    background-color: #edaa4c;
-    width: 1536px;
+    height: 160vh;
+    margin: -60px auto;
+    font-family: "DroidSansRegular", sans-serif;
+    padding-left: 60px;
+  }
+  .papers h1 {
+    width: 270px;
+    font-family: "DroidSansRegular", sans-serif;
+    padding-top: 43px;
+    padding-left: 10px;
+    margin-top: 40px;
+    line-height: 125%;
+  }
+  .papers small {
+    font-size: 8px;
+    font-style: oblique bold;
+  }
+  .papers .project {
+    margin-top: 80px;
+    width: 350px;
+    height: 350px;
+    text-align: justify;
+    text-indent: 85px;
+    line-height: 125%;
+  }
+  .papers #left-shadow {
+    background-image: url("http://bornfighting.com/wp-content/themes/bornfighting/assets/images/sprite.png");
+    background-repeat: no-repeat;
+    background-position: -336px -6px;
+    background-blend-mode: darken, lumninosity;
+    margin-top: -65px;
+    margin-left: -4px;
+    width: 50px;
     height: 100%;
-    margin: 0 auto;
+    float: left;
+    margin-top: -65px;
+  }
+  .papers #right-shadow {
+    background-position: -400px -6px;
+    float: right;
+    width: 50px;
+    height: 100%;
+    margin-top: -670px;
+    background-image: url("http://bornfighting.com/wp-content/themes/bornfighting/assets/images/sprite.png");
+    background-blend-mode: darken, luminosity;
+    margin-left: -20px;
+    background-repeat: no-repeat;
+    position: relative;
+    top: -440px;
+  }
+
+  .dragit {
+    width: 300px;
+    height: 300px;
+    padding: 1.6em;
+    border: 2px solid black;
+  }
+
+  iframe {
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    border: 6px ridge #FCF4DC;
   }
 }
 
