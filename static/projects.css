@@ -14,8 +14,8 @@
 
   #end {
     transfrom: rotate(-180deg);
-    margin-left: 585px;
-    margin-top: -15px;
+    margin-left: -39px;
+    margin-top: 0px;
   }
 
   #projects {
@@ -24,7 +24,7 @@
     margin: 100px;
     position: relative;
     line-height: 140%;
-    padding-right: 644px;
+    padding-right: 715px;
     font-style: oblique;
     font-weight: 600;
   }
@@ -44,33 +44,9 @@
     line-height: 125%;
   }
   .papers small {
-    font-size: 8px;
-    font-style: oblique bold;
-  }
-  .papers #lshadow {
-    background-image: url("http://bornfighting.com/wp-content/themes/bornfighting/assets/images/sprite.png");
-    background-repeat: no-repeat;
-    background-position: -336px -6px;
-    background-blend-mode: darken, lumninosity;
-    margin-top: -65px;
-    margin-left: -4px;
-    width: 50px;
-    height: 500px;
-    float: left;
-    margin-top: -65px;
-  }
-  .papers #rshadow {
-    background-position: -400px -6px;
-    float: left;
-    width: 50px;
-    height: 500px;
-    margin-top: -670px;
-    background-image: url("http://bornfighting.com/wp-content/themes/bornfighting/assets/images/sprite.png");
-    background-blend-mode: darken, luminosity;
-    margin-left: -20px;
-    background-repeat: no-repeat;
-    position: relative;
-    top: -440px;
+    font-size: 15px;
+    font-style: italic;
+    font-weight: 800;
   }
   .papers .project {
     margin-top: 80px;
@@ -79,6 +55,17 @@
     text-align: justify;
     text-indent: 85px;
     line-height: 125%;
+  }
+
+  .lshadow {
+    background-image: url("http://bornfighting.com/wp-content/themes/bornfighting/assets/images/sprite.png");
+    background-repeat: no-repeat;
+    background-position: -336px -6px;
+    margin-left: -4px;
+    margin-top: -65px;
+    width: 50px;
+    height: 500px;
+    float: left;
   }
 
   .dragit {
