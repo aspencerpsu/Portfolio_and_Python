@@ -3,15 +3,15 @@
 <! DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>Spencer Tech Consulting & Solution's Homepage</title>
 		<link rel="stylesheet" media="all" type="text/css" href="/static/portfolio_revamp/graphics.css"/>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="icon" type="image/x-icon" href="{% static "logo.ico" %}"/>
-		<link rel="stylesheet" type="text/css" href="{% static "projects.css" %}" />
-		
+		<link rel="stylesheet" type="text/css" href="{% static "projects.css" %}" />	
 		<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">	
 		{% block style %}{% endblock style %}
+		
+		<title>{{title}} </title>
 	</head>
 	<body>
 		<div id="fb-root"></div>
@@ -57,9 +57,9 @@
 						<ul>
 							<li><a href="/">Home</a></li>
 							<li><a href="#">Tools</a></li>
-							<li><a href="#">About</a></li>
+							<li><a href="/what-we-do">About</a></li>
 							<li><a href="/posts/">Blogs</a></li>
-							<li><a href="#">Contact</a></li>
+							<li><a href="/contacts">Contact</a></li>
 						</ul>
 						 
 						<ul class="social-bottom">
@@ -102,6 +102,5 @@
 
 	<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
   	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-	{% block script %}
-	{% endblock script %}
+	{% include "scriptfooter.html" %}
 </html>

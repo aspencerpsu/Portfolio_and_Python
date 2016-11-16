@@ -1,13 +1,17 @@
 {% extends "home.html" %}
 
+{% block style %}
+	<link rel="stylesheet" href="/static/contacts.css">
+{% endblock style %}
+
 {% block inside %}
-<div class="information">
+<div class="information" style="max-width: 1228.8000000000002px;">
 	<div class="github">
-		My github account:
-			http://github.com/aspencerpsu
-		* Always pushing and pulling ideas,
-		  proof in the pudding below:
-			<a href="http://github.com/aspencerpsu">giddish-yiddish-gibberish</a>
+<b>My github account:</b>
+		<br>
+			<li>Always pushing and pulling ideas
+              <tb>click to see my recent work below.</tb></li>
+<li><a href="http://github.com/aspencerpsu">giddish-yiddish-gibberish</a></li>
 	</div>
 	<div class="work">
 		Come work with me:
@@ -15,24 +19,42 @@
 		great designers,
 		statisticians,
 		application engineers
-		&
+		&amp;
 		managers
 		who are looking to be
 		more intuitive with 
 		their platform
 	</div>
 	<div class="linkin">
-		Check my linkedin profile for business inquries
+		Check my linkedin profile for business inquries:
+			<br>
 		*NO Recruiters Please*
+			<br>
 		*NO Bots*
-		*NO Solicitors* 
+			<br>
+		*NO Solicitors*
+			<br>
 		*NO Bootleggers*
+			<br>
 		*NO Scammers*
+			<br>
 		*NO Creepers*
+			<br>
 		*NO Scrapers*
+			<br>
 		*NO Haters*
-		----><a href="https://www.linkedin.com/in/akeemspencer">Akeem</a><-----
+			<br>
+		----&gt;<a href="https://www.linkedin.com/in/akeemspencer" style="
+    text-decoration: none;
+">LinkedIN Profile</a>&lt;-----
 	</div>
 	
 </div>
+<script>
+	/* get the size of the window screen */
+	var windowblock = window.innerWidth * .8;
+	var information = document.getElementsByClassName("information")[0];
+	/* set the div box according to scale of the window screen */
+	information.setAttribute("style", "max-width: "+windowblock+"px;");
+</script>
 {% endblock inside %}
