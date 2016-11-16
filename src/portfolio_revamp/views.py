@@ -25,9 +25,7 @@ def main(request):
 	index = open(r'templates/home.html').read()
 	last_5 = api.user_timeline(457888099, None, None, 6, None)
 	second_tweet = last_5[1]
-	# paginator = Paginator([Blogs.objects.first()], 1)
 
-	# page = paginator.page(1)
 	return render(request, "main.html", {"last_5": last_5, "second_tweet": second_tweet})
 
 def listing(request):
@@ -53,7 +51,10 @@ def about(request):
 	
 	return render(request, 'about.html')
 
-
+def contacts(request):
+	""" Just some information
+	    about myself, including my gmail account and phonenumber"""
+	return render(request, 'contact.html')
 
 def page_cannot_load(request):
 

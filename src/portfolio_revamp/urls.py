@@ -34,6 +34,7 @@ urlpatterns = [url(r'^admin/', include(admin.site.urls)),
 			    url(r'^posts/', include("posts.urls", namespace='posts')),
 				url(r'^$', main),
 				url(r'^what-we-do/$', about),
+				url(r'^contacts/$', contacts),
 				# url(r'^blogs/$', blogs),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

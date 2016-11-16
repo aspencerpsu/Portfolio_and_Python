@@ -1,0 +1,22 @@
+.information {
+  border: 5.8px inset rgba(124, 124, 123, 0.5);
+  padding: 0.3em;
+  font-family: "DroidSansRegular", sans-serif;
+  font-style: normal;
+}
+.information .github {
+  line-height: 140%;
+  width: 50%;
+  margin: 20px auto;
+}
+.information .work {
+  margin-top: 20px;
+  line-height: 150%;
+  width: 50%;
+  margin-left: 20px;
+}
+.information .linkin {
+  width: 25%;
+}
+
+/*# sourceMappingURL=contacts.css.map */
