@@ -5,18 +5,27 @@
 {{ instance.title }}
 {% endblock head_title %}
 
-{% block meta_facebook %}
-	
-	{% if not has_image %}
-		<meta property="og:image" content="http://159.203.121.150/static/portfolio_revamp/img/emblemmatic-spencer-tech-consulting-&-solutions-logo-60.png"/>
-	{% else %}
-		<meta property="og:image" content="{{instance.image.url}}"/>
-	{% endif %}
+{% block meta %}	
 		<meta property="og:description" content="{{instance.title}}"/>
 		<meta property="og:title" content="{{instance.title}}"/>
 		<meta property="og:type" content="article"/>
 		<meta property="og:url" content="{{instance.get_absolute_url}}"/>
-{% endblock meta_facebook %}
+		<meta property="og:locale" content="en_US">
+		<meta property="og:type" content="website">
+		<meta property="og:site_name" content="Spencer Tech Consulting & Solutions"/>
+		<meta name="twitter:card" content="summary"/>
+		<meta name="twitter:description" content="{{instance.title}}"/>
+		<meta name="twitter:title" content="{{instance.title}}"/>
+		<meta name="twitter:site" content="@UUID_Akeem"/>
+		<meta name="twitter:author" content="@UUID_Akeem"/>
+		{% if not has_image %}
+			<meta property="og:image" content="http://159.203.121.150/static/portfolio_revamp/img/emblemmatic-spencer-tech-consulting-&-solutions-logo-60.png"/>
+			<meta name="twitter:image" content="http://159.203.121.150/static/portfolio_revamp/img/emblematic-spencer-tech-consulting-&-solutions-logo-60.png"/>
+		{% else %}
+			<meta property="og:image" content="{{instance.image.url}}"/>
+			<meta name="twitter:image" content="{{instance.image.url}}"/>
+		{% endif %}
+{% endblock meta %}
 {% block content %}
 <style>
 	.main{

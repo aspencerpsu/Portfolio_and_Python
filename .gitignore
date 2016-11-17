@@ -4,3 +4,8 @@
 ny/
 settings.py
 manage.py
+src/tweets/views.py
+models.py
+migration/
+forms.py
+templatetags/
