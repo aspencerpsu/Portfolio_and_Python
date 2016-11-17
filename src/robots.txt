@@ -1,0 +1,5 @@
+User-agent: Twitterbot
+Allow: /static
+Allow: /media
+Disallow: /admin 
+
