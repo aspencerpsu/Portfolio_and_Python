@@ -1,3 +1,9 @@
+
+/* Lines 2-End are styles primarly responsible for desktop-size screns */
+
+
+$foundation-color: #4c4c4c
+
 .header
 	width: 100%
 	height: 200px
@@ -82,29 +88,35 @@
 	border-bottom: 1px solid #ccc
 	height: 278px
 	overflow: visible
-	float: left
 	width: 100%
-	margin-top: 16.85%
+	margin-top: 10.85%
 	padding-top: 50px
 
 .wrap
-	margin: 0 auto
+	margin: 0 390px
 	width: 1000px
 
 .frame
 	width: 49%
-	float: left
-	margin-left: -50px
+	background-image: url('https://static.pexels.com/photos/90807/pexels-photo-90807.jpeg') 
+	background-repeat: no-repeat 
+	background-position: center 
+	background-attachment: fixed
+	background-size: 300px 300px
+
 
 .action-container
-	width: 49%
-	float: left
-	margin-left: 60px
-	margin-top: -84px
+	width: 63%
+	margin-left: -147px
+	margin-top: -56px
+	clear: both
+	position: relative
+	/* bottom: 290px */
+	left: 629px
 
 .action
 	margin: 19px 0 0 0
-	color: #4c4c4c
+	color: $foundation-color
 	text-shadow: none
 	font-family: "DroidSansRegular", sans-serif
 	font-size: 2.2rem
@@ -112,19 +124,12 @@
 	font-weight: normal
 	line-height: 120%
 
-#row1-image
-	width: 543px
-	height: 325px
-	vertical-align: middle
-	margin-top: -46px
-	padding: 0 10%
 
 .footer
 	background: #4E4E4E url('http://www.developershed.com/images/footer-background.png') repeat
 	width: 100%
 	height: 450px
 	margin: 590px 0 -30px 0
-
 	ul
 		li
 			img
@@ -196,77 +201,84 @@
 	width: 18%
 	float: left
 	font-family: 'DroidSansRegular', sans-serif
-	font-weight: normal
-	font-style: normal
+	vertical-align: baseline
+	left: 28px
+	line-height: 100%
+	padding: 3px
+
+	a
+		text-decoration: underline
+		color: #cc99cc
+
+
+
 	display: block
+	vertical-align: baseline
+	left: 28px
+	line-height: 100%
+	padding: 3px
 
-	ul
-		line-height: 160%
-		margin: 70px 30% 0 0
-		list-style: None
-		list-style-type: None
+	a
+		text-decoration: underline
+		color: #cc99cc
+			
 
-.network-column
-	width: 37%
-	font-family: 'DroidSansRegular', sans-serif
-	font-weight: normal
-	font-style: normal
-	padding: 2px 6px 4px 6px
-	float: right
-	text-align: center
-	color: #fff
-	margin-top: 50px
+
+	.clearfix
+		display: block
+
+	.nav-column
+		color: #fff
+		text-align: right
+		width: 18%
+		float: left
+		font-family: 'DroidSansRegular', sans-serif
+		font-style: normal
+		display: block
+
+		ul
+			line-height: 160%
+			margin: 70px 30% 0 0
+			list-style: None
+			list-style-type: None
+
+	.network-column
+		width: 37%
+		font-family: 'DroidSansRegular', sans-serif
+		font-weight: normal
+		font-style: normal
+		padding: 2px 6px 4px 6px
+		float: right
+		text-align: center
+		color: #fff
+		margin-top: 50px
+		
+		ul
+			list-style: None
+			list-style-type: None
 	
-	ul
-		list-style: None
-		list-style-type: None
-
-.tutorials
-	list-style-type: None
-	list-style: None
-
-
-.twitter-column 
-	text-align: left
-	width: 20%
-	float: left
-	color: #c1197f
-	margin-top: -325px
-
-	h3
+	.copyright
 		position: relative
-		top: -80px
+		top: 130px
+		font-size: 14px
+		text-align: center
+		color: #fff
+		left: 75px
+		display: block
+		width: 621px
+		padding-right: 236px
+		margin-top: 25px
+		margin-left: -65px	
 
-.twitter-feed
-	width: 100%
-	word-wrap: break-word
+	.tutorials
+		list-style-type: None
+		list-style: None
 
-#tweets
-	text-align: left
-	color: #c1197f
-	width: 300px
-	height: 330px
-	overflow: scroll
-	margin-top: -85px
 
-	h3
-		font-size: 22px
-	
-	ul
-		padding: 0 0 0 10
-
-		li
-			list-style-type: none
-			padding: 20px 5px
-
-.copyright
-	position: relative
-	top: 130px
-	font-size: 14px
-	text-align: center
-	color: #fff
-	left: 75px
-	display: block
-	width: 700px
-	
+	.twitter-column 
+		text-align: left
+		width: 20%
+		float: left
+		color: $foundation-color
+		margin-top: -325px
 

@@ -1,0 +1,37 @@
+/* all a tags will just hover */
+a {
+  text-decoration: underline;
+  color: black;
+}
+a:hover {
+  color: #D11C24;
+  text-decoration: none;
+}
+
+.information {
+  border: 5.8px inset rgba(124, 124, 123, 0.5);
+  padding: 0.3em;
+  font-family: "DroidSansRegular", sans-serif;
+  font-style: normal;
+  height: 800px;
+  margin: 10px auto;
+}
+.information .github {
+  line-height: 140%;
+  width: 40%;
+  margin: 20px auto;
+}
+.information .work {
+  margin-top: 60px;
+  line-height: 150%;
+  width: 20%;
+  margin-left: 245px;
+}
+.information .linkin {
+  width: 25%;
+  margin-top: 40px;
+  margin-left: 185px;
+  line-height: 165%;
+}
+
+/*# sourceMappingURL=contacts.css.map */
