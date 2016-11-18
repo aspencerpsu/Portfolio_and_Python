@@ -5,10 +5,6 @@
 
 {% extends "home.html" %}
 
-{% block title %}
-    {{title}}
-{% endblock title %}
-
 {% block inside %}
 <div id="projects">
 	<div class="quotes"id="start">
@@ -60,4 +56,13 @@
 
 <br>						
 </div>
+<script>
+	if(window.innerWidth < 416 || window.clientWidth < 416){
+		var link = document.createElement("link");
+		link.setAttribute("rel", "stylesheet");
+		link.setAttribute("href", "/static/mobile_about.css");
+		document.getElementById("project_desktop").remove();
+		document.head.appendChild(link);
+	};
+</script>
 {% endblock inside %}
