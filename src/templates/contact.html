@@ -1,7 +1,7 @@
 {% extends "home.html" %}
 
 {% block style %}
-	<link rel="stylesheet" href="/static/portfolio_revamp/contacts.css">
+	<link rel="stylesheet" id="desktop_contact" href="/static/portfolio_revamp/contacts.css">
 {% endblock style %}
 
 {% block inside %}
@@ -56,5 +56,12 @@
 	var information = document.getElementsByClassName("information")[0];
 	/* set the div box according to scale of the window screen */
 	information.setAttribute("style", "max-width: "+windowblock+"px;");
+	if (window.innerWidth < 416 || window.clientWidth < 416){
+		document.getElementById("desktop_contact").remove();
+		var link = document.createElement("link");
+		link.setAttribute("rel", "stylesheet");
+		link.setAttribute("href", "/static/mobile_contact.css");
+		document.head.appendChild(link);
+	};
 </script>
 {% endblock inside %}

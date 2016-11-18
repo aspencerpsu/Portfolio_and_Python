@@ -1,6 +1,6 @@
 *.pyc
 *.h
-.sass-cache
+.sass-cache/
 ny/
 settings.py
 manage.py

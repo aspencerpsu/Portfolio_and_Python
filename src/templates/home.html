@@ -3,15 +3,16 @@
 <! DOCTYPE html>
 <html lang="en">
 	<head>
-		<link rel="stylesheet" media="all" type="text/css" href="/static/portfolio_revamp/graphics.css"/>
+		<link rel="stylesheet" media="all" id="desktopgraphic" type="text/css" href="/static/graphics.css"/>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="icon" type="image/x-icon" href="{% static "logo.ico" %}"/>
-		<link rel="stylesheet" type="text/css" href="{% static "projects.css" %}" />	
+		<link rel="stylesheet" id="project_desktop" href="{% static "projects.css" %}" />	
 		<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">	
+		<link rel="stylesheet" href="{% static "mobile_graphics.css" %}"/>
 		{% block style %}{% endblock style %}
 		
-		<title>{{title}} </title>
+		<title>{{title}}</title>
 	</head>
 	<body>
 		<div id="fb-root"></div>
@@ -26,7 +27,7 @@
 		<header class="header">
 			<a href="/">
 				<div class='logo'>
-					<img src="/static/portfolio_revamp/img/emblemmatic-spencer-tech-consulting-&-solutions-logo-60.png" alt="My Startup Logo">
+					<img src="/static/img/emblemmatic-spencer-tech-consulting-&-solutions-logo-60.png" alt="My Startup Logo">
 				</div>
 			</a>
 			<nav>
@@ -56,7 +57,7 @@
 					<div class="nav-column">
 						<ul>
 							<li><a href="/">Home</a></li>
-							<li><a href="#">Tools</a></li>
+							<li><a href="/tools">Tools</a></li>
 							<li><a href="/what-we-do">About</a></li>
 							<li><a href="/posts/">Blogs</a></li>
 							<li><a href="/contacts">Contact</a></li>
