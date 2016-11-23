@@ -1,0 +1,51 @@
+{% block scriptfoot %}
+
+<script>
+	/* create a link tank that works with bootstrap, once in mobile */
+	var bootstrap3 = document.createElement('link');
+	var bootstraptheme = document.createElement("link");
+	bootstraptheme.setAttribute("rel", "stylesheet");
+	bootstraptheme.setAttribute("href", "/static/portfolio_revamp/bootstraptheme.css");
+	var bootstrapjs = document.createElement("script");
+	bootstrapjs.setAttribute("src", "/static/portfolio_revamp/bootstrapjs.js");
+	bootstrap3.setAttribute("rel", "stylesheet");
+	bootstrap3.setAttribute("href", "/static/portfolio_revamp/bootstrap.css");
+	
+	$("header").css("max-width", window.innerWidth);
+	
+	$(document).ready(function(){
+		$('.contactblock').html("\n To become a contributer with me and help with recruiting on\n SEO training, contact (845)-598-6387. Would love to have front-end \n developers, back-end developers, technical developers, \n marketing, sales, and tech ops. Email the following address \n for possible client interaction with project success completions:  ");
+
+		$('.contactblock').append("\n\n\t\  E-Mail To: <a href=\"mailto:aspencerpsu@gmail.com\">aspencerpsu@gmail.com</a>");
+		if (window.innerWidth <= 415 || document.body.clientWidth <= 415) {
+			var new_node = document.getElementsByTagName("nav")[0].cloneNode(true);
+			var new_ul = document.getElementById("selections");
+			new_ul.appendChild(new_node);
+			$('header > nav').remove();
+			$("#desktopgraphic").remove();	
+			enlist = document.getElementsByTagName('code')[0].cloneNode(true);
+
+			$('pre').remove();
+			document.getElementsByClassName('enlist')[0].appendChild(enlist);	
+
+		}
+
+		else {
+			$('.menu').css("display", "none");
+		};
+		
+		
+		$('.collapsed').click(function(){
+			
+			$('#selections').toggle(1000);
+		});
+		
+		$('.quotes').attr("style", "background-image: url('http://spencertechconsulting.com/media/BIGASSQUOTES.JPG'); background-size: contain; background-position: center;");
+		$('.papers').css("width", 0.9180328 * window.innerWidth);
+		$(".dragit")
+			.draggable()
+			.resizable();
+
+	});
+</script>
+{% endblock scriptfoot %}
