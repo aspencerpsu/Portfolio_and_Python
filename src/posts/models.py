@@ -90,8 +90,8 @@ def pre_save_post_receiver(sender, instance, *args, **kwargs):
 		instance.readtime = read_time_var
 	
 	if instance.image:
-		image.height_field = 630
-		image.width_field = 1200	
+		instance.height_field = 630
+		instance.image.width_field = 1200	
 
 
 
