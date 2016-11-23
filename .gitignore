@@ -1,6 +1,7 @@
 *.pyc
 *.h
 .sass-cache/
+*.sassc
 ny/
 settings.py
 manage.py
@@ -9,3 +10,4 @@ models.py
 migration/
 forms.py
 templatetags/
+robots.txt
