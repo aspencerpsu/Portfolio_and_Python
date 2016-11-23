@@ -84,5 +84,15 @@ def page_cannot_load(request):
 		content_type = 'text/html'
 	return HttpResponse(body, content_type=content_type, status=404)
 
+def us(request):
+	context = {"title": "From The Beginnings"}
+	return render(request, "construction.html", context)
 
+def tools(request):
+	context = {"title": "Some Of The Tools We Specialize In"}
+	return render(request, "construction.html", context)
+
+def considerations(request):
+	context={"title": "Coming Soon"}
+	return render(request, "construction.html", context)
 

@@ -35,6 +35,9 @@ urlpatterns = [url(r'^admin/', include(admin.site.urls)),
 				url(r'^$', main),
 				url(r'^what-we-do/$', about),
 				url(r'^contacts/$', contacts),
+				url(r'^tools', tools),
+				url(r'^about-us', us),
+				url(r'^considerations', considerations),
 				# url(r'^blogs/$', blogs),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
@@ -46,4 +49,3 @@ urlpatterns += staticfiles_urlpatterns()
 #     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 handler404 = "portfolio_revamp.views.page_cannot_load"
-
