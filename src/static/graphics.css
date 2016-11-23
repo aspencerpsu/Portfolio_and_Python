@@ -90,47 +90,47 @@
 }
 
 .wrap {
-  margin: 0 390px;
-  width: 1000px;
+	
+	margin: 0 200px;
+	width: 1000px;
 }
 
 .frame {
-	    width: 49%;
-    background-image: url(https://static.pexels.com/photos/90807/pexels-photo-90807.jpeg);
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
-    height: 112%;
-    margin-top: -39px;
-    margin-left: -29px;
-    background-attachment: fixed;
-    height: 300px;
-    left: 0;
-    bottom: 43px;
-    margin-top: -34px;
-    margin-left: -44px;
-    border: 7.5px inset;
+	width: 49%;
+	background-image: url(https://static.pexels.com/photos/90807/pexels-photo-90807.jpeg);
+	background-size: contain;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	height: 300px;
+	left: 0;
+	bottom: 43px;
+	margin-top: -34px;
+	margin-left: 110px;
+	border: 7.5px inset;
 }
 
 .action-container {
-    width: 49%;
-    margin-left: -33px;
-    margin-top: -85px;
-    clear: both;
-    position: relative;
-     bottom: 290px; 
-    left: 641px;
+	
+	width: 49%;
+	margin-left: 0px;
+	margin-top: -85px;
+	clear: both;
+	position: relative;
+	bottom: 290px;
+	left: 641px;
 }
 
 .action {
-  margin: 5px 0 0 0;
-  color: #4c4c4c;
-  text-shadow: none;
-  font-family: "DroidSansRegular", sans-serif;
-  font-size: 2.2rem;
-  letter-spacing: -2px;
-  font-weight: normal;
-  line-height: 120%;
+  
+	margin: 5px 0 0 0;
+	color: #4c4c4c;
+	text-shadow: none;
+	font-family: "DroidSansRegular", sans-serif;
+	font-size: 2.2rem;
+	letter-spacing: -2px;
+	font-weight: normal;
+	line-height: 120%;
 }
 
 .footer {
