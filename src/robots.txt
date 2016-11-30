@@ -1,4 +1,4 @@
-User-agent: Twitterbot
+User-agent: *
 Allow: /static
 Allow: /media
 Disallow: /admin 
