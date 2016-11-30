@@ -3,9 +3,7 @@
 <html lang=en>
 	<head>
 		<meta charset="UTF-8">
-		<meta http-equiv="X-UA-Compatible" content="IE-edge">
-		<meta name="viewport" content="width=device-width, intial-scale=1">
-		
+		<meta http-equiv="X-UA-Compatible" content="IE-edge">	
 		<link rel="stylesheet" href="{% static "bootstrap/waqtoo/assets/css/bootstrap.min.css" %}"/>
 		<link rel="stylesheet" href="{% static "bootstrap/waqtoo/assets/css/bootstrap-responsive.min.css" %}"/>
 		<link rel="stylesheet" href="{% static "bootstrap/waqtoo/assets/css/style.css" %}"/>
@@ -20,11 +18,13 @@
 				<div class="span12">
 					{% block include %}
 					{% endblock include %}
+					<a href="/">
 					<div class="logo">
 						<div class="hidden">
 							SpencerTechConsulting Website
 						</div>
 					</div>
+					</a>
 					<div class="clock-header">
 						<h1>The Website Is Under Construction: Come Back At Launch Date</h1>
 						<br>
@@ -32,25 +32,7 @@
 							Estimate Timer Remaining Before Launch
 						</p>
 					</div>
-					<div class="clock hasCountdown" id="countdown">
-						<ul>
-							<li>
-								<div class="timer">2</div>
-								<div class="timer-label">Days</div>
-							</li>
-							<li>
-								<div class="timer">59</div>
-								<div class="timer-label">Hours</div>	
-							</li>
-							<li>
-								<div class="timer">59</div>
-								<div class="timer-label">Minutes</div>
-							</li>
-							<li>
-								<div class="timer">59</div>
-								<div class="timer-label">Seconds</div>
-							</li>
-						</ul>
+					<div class="clock" id="countdown">
 					</div>
 				</div>
 			</div>
@@ -60,7 +42,7 @@
 		</div>	
 
 		<script src="{% static "bootstrap/waqtoo/assets/js/jquery.js" %}"></script>
-		<script src="{% static "bootstrap/waqtoo/assets/js/jquery.countdown.min.js" %}"></script>
+		<script src="{% static "bootstrap/waqtoo/assets/js/jquery.countdown/jquery.countdown.min.js" %}"></script>
 		<script src="{% static "bootstrap/waqtoo/assets/js/custom.js" %}"></script>
 	</body>
 </html>
