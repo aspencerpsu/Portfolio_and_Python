@@ -1,5 +1,5 @@
 User-agent: *
-Allow: /static
-Allow: /media
+Allow: /static/*
+Allow: /media/*
 Disallow: /admin 
 
