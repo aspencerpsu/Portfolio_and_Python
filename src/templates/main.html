@@ -25,7 +25,7 @@
 
                                 <!-- Remember this Twitter column is located in the row above and the position is skewed upward.....see the style.sass sheet and the graphics.css sheet.  -->
                                                 <h3><strong>Twitter Feed &nbsp</strong>
-                                                        <a href="http://twitter.com/akeemspencer" target="_blank"><img src="/static/twitter.png" alt=""></a></h3>
+                                                        <a href="https://twitter.com/UUID_Akeem" target="_blank"><img src="/static/twitter.png" alt=""><span>By @UUID_AKEEM!</span></a></h3>
                                                 <div class="twitter-feed">
                                                         <div id="tweets">
 
@@ -34,7 +34,7 @@
                                                                 {% block non_retweets %}
                                                                 <ul>
                                                                         {% for tweet in last_5 %}
-                                                                                <li>&nbsp&nbsp&nbsp&nbsp&nbsp{{ tweet.text }}<a href="https://www.twitter.com/status/{{ tweet.id_str }}">{% if tweet.retweeted %} RT {% endif %} See Tweet</a>
+                                                                                <li>&nbsp&nbsp&nbsp&nbsp&nbsp{{ tweet.text }}<a href="https://www.twitter.com/UUID_Akeem/status/{{ tweet.id_str }}">{% if tweet.retweeted %} RT {% endif %} See Tweet</a>
 
                                                                                 </li>
                                                                         {% endfor %}

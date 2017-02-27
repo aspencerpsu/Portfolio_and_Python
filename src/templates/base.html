@@ -33,8 +33,10 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		{% block meta %} {% endblock meta %}
 	</head>
-
+	{% autoescape on %}
 	<body>
+	
+		<script src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>
 		{% include "messages_display.html" %}
 		<div class="container">
 			{% include "top-filler.html" %}
@@ -48,7 +50,6 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/highlight.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.6/marked.js"></script>
-<script src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.6/marked.js"></script>
 <script>
 	$(document).ready(function() {
@@ -56,14 +57,12 @@
 	  	$('.content-markdown').each(function(i,block){
 	  		var content = $(this).text();
 	  		var trimmedcontent = content.trim();
-	  		console.log(trimmedcontent);
 	  		var markedcontent = marked(trimmedcontent);
 	  		$(this).html(markedcontent);
-	  		console.log(markedcontent);
 	  	});
 
 	  	 $('pre code').each(function(i, block) {
-    		hljs.highlightBlock(block);
+    			hljs.highlightBlock(block);
   		});
 
 	  	 $('.content-markdown img').each(function(){
@@ -93,7 +92,7 @@
            	 		});
         		};
       		};
-  		  };
+	  };
     
     	setPreview();
     });
@@ -101,5 +100,5 @@
 </script>
 
 </body>
-
+{% endautoescape %}
 </html>

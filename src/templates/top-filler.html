@@ -2,7 +2,7 @@
  
  {% if proxy_list %}
  <div class="row">
- <div class="col-xs-12">
+ <div class="col-xs-6 top">
  
  	<div class="logo_fixture">
  		<svg width="335px" height="335px">
@@ -13,5 +13,48 @@
 		</a>
 	</div>
  </div>
+<div class="col-xs-6 frame">
+	<div class="weatherapp">
+	</div>
 </div>
+</div>
+<script>
+	$(document).ready(function() {
+	  var iframe_model = document.createElement("iframe");
+	  $.ajax({
+	  	url : "http://api.wunderground.com/api/c88441dcb4b52c50/geolookup/conditions/q/autoip.json",
+	  	dataType : "jsonp",
+	  	success : function(parsed_json) {
+			var location = parsed_json['location']['city'];
+			var wuiurl = parsed_json['location']['wuiurl'];
+			iframe_model.setAttribute("src", wuiurl);
+			iframe_model.setAttribute("width", $(window).width() * .38)
+			iframe_model.setAttribute("height", "275px");
+			iframe_model.setAttribute("marginwidth", "10px");
+			iframe_model.setAttribute("marginheight", "-10px");
+			iframe_model.setAttribute("sandbox", "allow-scripts");
+			iframe_model.setAttribute("id", "weatherframe");
+
+			/* iframe_model.setAttribute("referrerpolicy", "no referrer");  */
+			if (window.innerWidth > 1000){
+				$(".weatherapp").append(iframe_model)
+					.css("position", "fixed")
+					.css("top", "28px");
+				$("#weatherframe").ready(function(){
+					var navbar = document.getElementsByClassName("topbar")[0].getAttribute("id");
+					console.log(navbar);
+					var frameitself = $("#weatherframe").children()
+					console.log(frameitself);
+					$(".topbar").remove(true);
+					
+				});
+			}
+			
+		  }
+	  });
+	  
+	$(".header-ad-wrap").remove(true).delay(2000);
+	$(".inner-content").css("margin", "-40px auto");	
+});
+</script>
 {% endif %} 

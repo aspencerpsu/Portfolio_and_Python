@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>I Want To Get To Know You....</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	{{form.media}}
+
+	{% load crispy_forms_tags %}
+    <style>
+	body{
+		background-image: url('/media/WeddingFaculty/the_starting_5_tran.JPG');
+		background-attachment: fixed;
+		background-position: inherit;
+		background-repeat: no-repeat;
+		background-attachment: fixed;
+		background-clip: initial;
+		background-size: cover;	
+	}
+	.aligntop{
+		background-color: #fff;
+		margin-top: 22.13%;
+		padding-top: 25px;
+	}
+	.intro{
+		padding-top: 20px;
+		padding-bottom: 20px;
+		padding-left: 15px;
+		padding-right: 15px
+	}
+	.messages{
+		background-color: #fff;
+	}
+	
+    </style>
+  </head>
+  <body>
+  <div class='container-fluid'> 
+    {% if messages %}
+    <div class='row'>
+	    <div class='messages'>
+	      <ul class="messages">
+	      {% for message in messages %}
+		<li class="alert 
+		  {% if message.tags %} 
+		    {{ message.tags }}
+		  {% endif %} 
+		  {% if message.level == 40 %} 
+		    alert-warning 
+		  {% endif %}" role=alert>
+		  {% if "html_safe" in message.tags %}
+		    {{ message|safe }}
+		  {% else %}
+		    {{ message }}
+		  {% endif %}
+		</li>
+	       {% endfor %}
+	       </ul>
+	     </div>
+	    </div>
+    </div>
+    {% endif %}
+     <div class='tran row'>
+	  <div class='col-sm-2'></div>
+	  <div class='col-sm-8 aligntop'>
+	      <h1 style='text-align:center;'>The Starting 5, We All We Got!</h1>	
+	      <div class='intro'>
+		Alright, this year we are going to celebrating the matrimony between two of our friends who've always had our best intentions when we were on our soapbox and two great people we've always had the ability to hang out and share our ideas with a simple phone call.
+		Ladies and gents, let's come together and share with the wedding attendees a little bit about ourselves, and how we've first met Jon and Bianca. It adds a beautiful storyline to the wedding and I know we want this wedding to be rocking and a tearjerker. So let's be ourselves, and let's add some flair to this wedding. Guys I know we going to tear the house down. So let's prepare for the big day!
+		If you have any questions or you would like to resubmit, just email aspencerpsu@gmail.com. And keep it clean down there!
+	      </div>
+	      <form method='POST' action='' enctype='multipart/form-data'>
+		{% csrf_token %}
+		{{ form|crispy }}
+		<input type='submit' value='Submit'/>
+	      </form>
+	  </div>
+	  <div class='col-sm-2'></div>
+      </div>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+      <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+      <script>
+	var whoyouare=700;
+	var meet=700;
+
+	function checkbox(node,counter){
+		$('#'+node.id).keypress(function(event){
+			textarea_val = $('#'+node.id);
+			counter--;
+			text_amount=textarea_val.val().length;
+			console.log(whoyouare);
+			console.log(text_amount);
+			if (700 - text_amount > counter){
+				counter = 700 - text_amount - 1;
+				$('#'+node.id+'_1').text("Number of characters left are: "+counter);
+			}
+			else{
+		      	      $('#'+node.id+'_1').text('Number of characters left are: '+counter);};
+		})
+	};
+
+        function charactersleft(node){
+	  if($('#'+node.id+'_1').length == 0){
+		console.log(node.id);
+		$("#"+node.id).parent().append("<div id='"+node.id+"_1'"+">Number of characters left are: "+whoyouare+" </div>");
+		
+		node.id == 'id_whoyouare' ? checkbox(node, whoyouare) : checkbox(node, meet);
+		}
+	  else{
+		document.getElementById(''+node.id+'_1').setAttribute('style','opacity: 1;');
+		node.id == 'id_whoyouare' ? checkbox(node, whoyouare) : checkbox(node, meet)};
+	   };
+
+	/* ************************************************************* */	
+        $(document).ready(function(){
+	  	
+		/* Ensure they aren't going over the allotted character amount */
+		$('textarea').focus(function(e){
+			textnode = e['target'];
+			console.log(textnode);
+			charactersleft(textnode);
+		 });
+	        $('textarea').focusout(function(e){
+			textnode = e['target'];
+			console.log('I exited');
+			document.getElementById(''+textnode.id+'_1').setAttribute('style', 'opacity:0');
+		});
+		
+		colors = ['rgba(255, 0, 0, 0.672)', 'rgba(0, 255, 0, 0.671)', 'rgba(255, 128, 0, 0.612)', 'rgba(128, 0, 64, 0.692)', 'rgba(255, 255, 0.672)', 'rgba(0, 64, 128, 0.672)', 'rgba(0,128,0,0.692)', 'rgba(252, 16, 3, 0.672)', 'rgba(64, 0, 64, 0.642)', 'rgba(0,0,255,0.672)', 'rgba(255, 0, 255)', 'rgba(0,128,255,0.672)'];
+		
+		for (x=0;x<colors.length;x++){
+			$('option')[x].setAttribute('style', 'background-color: '+colors[x]+';');
+		};
+		
+		for (x=0;x<$('select').children().length;x++){
+			sign = $('option:eq('+x+')').text();
+			value = $('option:eq('+x+')').val();
+			$('option:eq('+x+')').text(sign+':'+'     '+value);
+		};
+		
+		labels=['What\'s Your Name?', 'Image Portrait', 'Zodiac Sign', 
+			 'Tell Us About Yourself!', 'How\'d You Meet Jon or Bianca?', 'Age'];
+		for (x=0;x<$('label').length;x++){
+			$('label:eq('+x+')').text(labels[x]);
+		};
+	 });
+      </script>
+  </div>
+  </body>
+</html>
