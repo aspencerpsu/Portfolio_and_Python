@@ -30,15 +30,16 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 sys.dont_write_bytecode = True
 
-urlpatterns = [url(r'^admin/', include(admin.site.urls)), 
-			    url(r'^posts/', include("posts.urls", namespace='posts')),
-				url(r'^$', main),
-				url(r'^what-we-do/$', about),
-				url(r'^contacts/$', contacts),
-				url(r'^tools', tools),
-				url(r'^about-us', us),
-				url(r'^considerations', considerations),
-				# url(r'^blogs/$', blogs),
+urlpatterns = [ url(r'^admin/', include(admin.site.urls)), 
+	        url(r'^posts/', include("posts.urls", namespace='posts')),
+		url(r'^thebigday/', include("weddings.urls", namespace="weddings")),
+		url(r'^$', main),
+		url(r'^what-we-do/$', about),
+		url(r'^contacts/$', contacts),
+		url(r'^tools', tools),
+		url(r'^about-us', us),
+		url(r'^considerations', considerations),
+	       # url(r'^blogs/$', blogs),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 urlpatterns += staticfiles_urlpatterns()
