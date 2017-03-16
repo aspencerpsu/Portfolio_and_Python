@@ -32,7 +32,7 @@ def post_create(request):
 	post_create = request.get_full_path
 		
 	form = PostForm(request.POST or None, request.FILES or None)
-	if form.is_valid():
+	if form.is_valid() and form.is_bound:
 		instance = form.save(commit=False)
 		instance.user = request.user
 	
@@ -78,7 +78,6 @@ def post_detail(request, slug=None):
 		"title": instance.title,
 		"instance": instance,
 		"share_string": share_string,
-		# "comments": comments,
 		"has_image": instance.image.__bool__(),
 		"timeshare": str(timeshare),
 		"proxy_detail": re.match("^(/posts/){1}(\w+\-?)+/$", str(request.path)),

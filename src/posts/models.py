@@ -34,6 +34,7 @@ def upload_location(instance, filename):
 class Post(models.Model):
 	user = models.ForeignKey(settings.AUTH_USER_MODEL, default=1)
 	title = models.CharField(max_length=120)
+	description = models.CharField(max_length=120, default="None At The Moment")
 	slug = models.SlugField(unique=True)
 	image = models.ImageField(upload_to=upload_location,
 								null=True,
@@ -51,10 +52,10 @@ class Post(models.Model):
 	objects = PostManager()
 
 	def __unicode__(self):
-		return self.title
+		return self.title, self.description
 
 	def __str__(self):
-		return self.title
+		return self.title, self.description
 
 	def get_absolute_url(self):
 		return reverse("posts:detail", kwargs={"slug":self.slug})
