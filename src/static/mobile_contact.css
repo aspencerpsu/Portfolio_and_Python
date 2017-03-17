@@ -1,0 +1,194 @@
+@charset "UTF-8";
+/* Lines 2-End are styles primarly responsible for desktop-size screns */
+@font-face {
+  font-family: "glyphicons-halflings-regular";
+  src: url("static/fonts/glyphicons-halflings-regular.woff2") format("woff2");
+}
+@media (max-width: 415px) {
+  header {
+    width: 100%;
+    background-color: #0b0a0a;
+    height: 200px;
+    margin-top: -9px;
+    margin-left: -8px;
+  }
+  header .logo {
+    width: 100%;
+    height: 200px;
+  }
+  header .logo img {
+    width: 256px;
+    height: 222px;
+    margin-top: 26px;
+    margin-left: -8px;
+  }
+  header li {
+    float: right;
+    margin-top: -9px;
+    width: 80px;
+    height: 50px;
+    list-style: none;
+    background-color: #2e3235;
+    background-size: cover;
+    background-position: center;
+    color: #ffffff;
+    font-weight: bold;
+    text-indent: 20px;
+  }
+  header li btn {
+    height: 55px;
+    width: 68px;
+  }
+  header li .glyphicon {
+    position: static !important;
+    display: block !important;
+    font-family: "Glyphicons Halflings";
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    text-decoration: none;
+    color: #fff;
+  }
+  header li .glyphicon-menu-hamburger:before {
+    content: "";
+  }
+  header li .glyphicon-class {
+    display: block !important;
+    margin-left: -5px;
+    margin-top: 7px;
+    color: #fff;
+  }
+
+  #selections nav {
+    color: #ffffff !important;
+    height: 34.22% !important;
+    padding-top: 26px !important;
+    background-color: #0b0a0a !important;
+    width: 100% !important;
+  }
+  #selections ul {
+    width: 100% !important;
+    height: 102px !important;
+    display: block !important;
+    list-style: none !important;
+    padding: 0 !important;
+  }
+  #selections ul li {
+    background-color: #7c7c7c !important;
+    padding: 20px 30% !important;
+    font-size: 17px !important;
+  }
+  #selections ul li a {
+    text-decoration: none !important;
+  }
+
+  nav {
+    background-color: #000000;
+    height: 34.22%;
+    padding-top: 26px;
+    margin-left: -8px;
+    background-color: #0b0a0a;
+    width: 100%;
+    color: #ffffff;
+  }
+  nav font {
+    family: Helvetica;
+    size: 12px;
+  }
+  nav ul {
+    width: 95%;
+    height: 100px;
+    display: block;
+  }
+  nav ul background {
+    color: #868686;
+  }
+  nav ul li {
+    background-color: #7c7c7c;
+    padding: auto;
+  }
+  nav ul li:hover background {
+    color: gray;
+  }
+  nav ul li a {
+    color: #ffffff;
+    margin: 10px auto;
+  }
+  nav ul li a text {
+    align: center;
+    underline: none;
+  }
+
+  .footer {
+    position: relative;
+    margin-top: 150px;
+  }
+  .footer .wrap {
+    display: block;
+  }
+  .footer .wrap .nav-column {
+    background-color: #7c7c7c;
+  }
+  .footer .wrap .nav-column ul {
+    padding: 10px 111px;
+  }
+  .footer .wrap .nav-column ul li {
+    list-style: none;
+    text-decoration: none;
+    color: #fff;
+    line-height: 190%;
+  }
+  .footer .wrap .nav-column a {
+    text-decoration: none;
+    color: #fff;
+  }
+  .footer .wrap .nav-column a:hover {
+    color: #00e;
+  }
+  .footer .wrap .network-column {
+    margin-left: 32px;
+  }
+  .footer .wrap .network-column h3 {
+    text-indent: 35px;
+  }
+  .footer .wrap .network-column ul {
+    padding: 0;
+  }
+  .footer .wrap .network-column ul li {
+    list-style: none;
+  }
+  .footer .copyright {
+    background-color: #7c7c7c;
+    font-size: 14px;
+    line-height: 164%;
+    text-align: center;
+    color: #fff;
+  }
+  .footer .enlist {
+    padding: 50px;
+  }
+
+  .information {
+    margin-top: 80px;
+    line-height: 127%;
+  }
+
+  .github {
+    padding-top: 16px;
+    padding-bottom: 21px;
+    padding-left: 10px;
+  }
+  .github li {
+    list-style-type: cjk-earthly-branch;
+  }
+  .github .linkin {
+    padding-left: 15px;
+  }
+  .github .linkin .message {
+    text-indent: 5px;
+    padding-left: 30px;
+  }
+}
+
+/*# sourceMappingURL=mobile_contact.css.map */

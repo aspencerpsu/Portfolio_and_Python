@@ -6,7 +6,7 @@
 {% endblock head_title %}
 
 {% block meta %}	
-		<meta property="og:description" content="{{instance.title}}"/>
+		<meta property="og:description" content="{{instance.description}}"/>
 		<meta property="og:title" content="{{instance.title}}"/>
 		<meta property="og:type" content="article"/>
 		<meta property="og:url" content="{{instance.get_absolute_url}}"/>
@@ -15,17 +15,16 @@
 		<meta property="og:site_name" content="Spencer Tech Consulting & Solutions"/>
 		
 		<meta name="twitter:card" content="summary"/>
-		<meta name="twitter:description" content="{{instance.title}}"/>
+		<meta name="twitter:description" content="{{instance.description}}"/>
 		<meta name="twitter:title" content="{{instance.title}}"/>
 		<meta name="twitter:site" content="@UUID_Akeem"/>
 		<meta name="twitter:author" content="@UUID_Akeem"/>
 		{% if not has_image %}
-			<meta name="twitter:image" content="/static/img/emblemmatic-spencer-tech-consulting-&-solutions-logo-60.png"/> 
-			<meta property="og:image" content="/static/img/emblemmatic-spencer-tech-consulting-&-solutions-logo-60.png"/>
+			<meta name="twitter:image" content="https://spencertechconsulting.com/static/img/emblemmatic-spencer-tech-consulting-&-solutions-logo-60.png"/> 
+			<meta property="og:image" content="https://spencertechconsulting.com/static/img/emblemmatic-spencer-tech-consulting-&-solutions-logo-60.png"/>
 		{% else %}
-			<meta property="og:image" content="{{instance.image.url}}"/>
-			
-			<meta name="twitter:image" content="{{instance.image.url}}"/>
+			<meta property="og:image" content="https://spencertechconsulting.com{{instance.image.url}}"/>
+			<meta name="twitter:image" content="https://spencertechconsulting.com{{instance.image.url}}"/>
 		{% endif %}
 {% endblock meta %}
 {% block content %}

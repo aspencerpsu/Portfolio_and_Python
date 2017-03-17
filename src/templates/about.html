@@ -1,35 +1,37 @@
 <!-- load all of your templatetags directly into this template -->
 
-
-<!-- -->
-
 {% extends "home.html" %}
 
 {% block inside %}
 <div id="projects">
 	<div class="quotes"id="start">
  
-	</div>
-	
-	Our service at SpencerTechConsulting revolves around understanding the demands your customers need and the customer retention that is required for your business to fluorish.
+	</div>	
+	<ul>
+	  <li>
+	   Our service at SpencerTechConsulting revolves around understanding the demands your customers need and the customer retention that is required for your business to fluorish.</li>
+	<p>
+	<li>We have the ability to spread components server to server, which requires a vast amount of infrastructure knowledge and complex mathematical analytics to solver constraints unique and persistant to your situation.</li>
+	</p>
 	<br>
-	<br>	
-	We have the ability to spread components
-	server to server, which requires a vast amount of infrastructure knowledge and complex mathematical analytics to solver constraints unique and persistant to your situation.
-	<br>
-  	<br>
+	<p>
+	<li>
 	In order to determine a stochastic model, we must first
 	determine a solver model that fits within the paradigm of the
 	proper logisitics, HR resource, personnel additions, and transportation
 	costs of your company does on a baseline schedule.
-  	<br>
+	</li>
+	</p>
 	<br>
-	In order for the ERP system to have "real-time" results. In depends upon 
-	raw critical data being pulled and minimal low-latency internet connections. 
-	<br>
+	<p>
+	<li>In order for the ERP system to have "real-time" results. In depends upon raw critical data being pulled and minimal low-latency internet connections. 
+	</li>
+	</p>
   	<br>
+	<p>
 	Further examples are provided below:
-	<br>
+	</p>
+	</ul>
 	<div class="quotes" id="end">
 
 	</div>
@@ -44,14 +46,18 @@
 	
 	<h3>The Loudest Megaphone</h3>
 
-	
+	<!--	
 	<div class="dragit">
 		<iframe height="300px" width="300px" marginheight="20px" marginwidth="10px" name="loudestmegaphone" src="http://159.203.121.150:9005/" class="inline-model" scrolling=yes></iframe>
-	</div>
-	<small>(Move right corner to expand or drag white area to fit screen)</small>
+	</div>-->
+	<!--<small>(Move right corner to expand or drag white area to fit screen)</small>-->
 	<div class="project">
+		<aside>
+		<p>
 		The Loudest Megaphone is a group-collective effort to increase 
 		awareness to states, villages, and cities most affected by gun-violence. The website and mobile app are designed to reach NGOs and Congress to help pass and regulate tougher restrictions and background checks on firearm purchases to customer and to expose loophole gun show purchases. Serial numbers are not enough for a preventative measure. For more information, check gunviolencearchive.org, theloudestmegaphone twitter handle, or cdn for more information to contact your local government to make a significant change. We are a joint effort with IANSA, The Brady Campaign, Coalition To Stop Gun Violence, and violence policy centre to stop domestic gun abuse from unlawful gun owners.
+		</p>
+		</aside>
 	</div>
 
 <br>						
@@ -63,6 +69,10 @@
 		link.setAttribute("href", "/static/mobile_about.css");
 		document.getElementById("project_desktop").remove();
 		document.head.appendChild(link);
+	} else {
+		var project = document.getElementsByClassName('project')[0];
+		project.setAttribute("style", "padding-right: 150px; width: 40%; text-indent: 5px;");
 	};
+			
 </script>
 {% endblock inside %}

@@ -83,7 +83,7 @@ def post_detail(request, slug=None):
 		"proxy_detail": re.match("^(/posts/){1}(\w+\-?)+/$", str(request.path)),
 	}
 	
-	print instance.image.__bool__()
+	print instance.image.__bool__() #determine if the image exists for meta tags
 
 	return render(request, "post_detail.html", context)
 
