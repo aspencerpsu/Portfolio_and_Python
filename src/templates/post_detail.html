@@ -1,9 +1,24 @@
 {% extends "base.html" %}
 {% load urlify %}
+{% load crispy_forms_tags %}
 
 {% block head_title %}
-{{ instance.title }}
+  {{ instance.title }}
 {% endblock head_title %}
+
+{% block head_extra %}
+{% comment %}{{ form.media }}{% endcomment %}
+<style>
+	.main{
+		padding: 0 41px;
+	}
+	.model{
+		position: fixed;
+		width: 500px;
+		height: 500px;
+	}
+</style>
+{% endblock head_extra %}
 
 {% block meta %}	
 		<meta property="og:description" content="{{instance.description}}"/>
@@ -28,18 +43,67 @@
 		{% endif %}
 {% endblock meta %}
 {% block content %}
-<style>
-	.main{
-		padding: 0 41px;
-	}
-</style>
 	
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Launch modal
+</button>
+
+{% comment %} Modal {% endcomment %}
+
+<div class="modal" id="exampleModal" tabindex=-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role=document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Sign Up! It's Free Anway</h5>
+	<button type="button" class="close" data-dismiss="modal" aria-label="Nah, I'm a Wasteman">
+	  <span aria-hidden="true">&times;</span>
+
+	</button>
+      </div>
+      <div class="modal-body">
+	...
+      </div>
+      <div class="modal-footer">
+	<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+	<button type="button" class="btn btn-primary" >Save changes</button>
+      </div>
+    </div>
+   </div>
+</div>
+
+	<form method="POST" action="" enctype="multipart/form-data">{% csrf_token %}
+	  {{ form }}
+ 	  {{ living_tissue }}
+	  <input type="submit" class="btn btn-primary" value="Sign Me Up On Latest Marketing!"/>
+
+	</form>
+
 <div class='row'>
 	<div class='col-md-6'>
 		<ul>
 			<li style="list-style-type: none;"><a href="/posts/">Go Back</a></li>
 		</ul>
 	</div>
+	
+	    <div class='messages'>
+	      <ul class="messages">
+	      {% for message in messages %}
+		<li class="alert 
+		  {% if message.tags %} 
+		    {{ message.tags }}
+		  {% endif %} 
+		  {% if message.level == 40 %} 
+		    alert-warning 
+		  {% endif %}" role=alert>
+		  {% if "html_safe" in message.tags %}
+		    {{ message|safe }}
+		  {% else %}
+		    {{ message }}
+		  {% endif %}
+		</li>
+	       {% endfor %}
+	       </ul>
+	     </div>
 </div>
 
 <div class='col-md-offset-4 col-md-6 main'>
@@ -104,6 +168,5 @@ Linkedin
 </div>
 </div>
 </div>
-
 
 {% endblock content %}

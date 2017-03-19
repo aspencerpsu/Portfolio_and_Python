@@ -10,6 +10,7 @@ except:
 
 import math
 import json
+import sys
 from django.contrib import messages
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models import Q
@@ -19,8 +20,9 @@ from django.shortcuts import render, get_object_or_404
 from django.utils import timezone
 # from comments.models import *
 
-from .forms import PostForm
-from .models import Post
+from .forms import PostForm, SubForm
+from .models import Post, SubscriptionList
+		   
 from .utils import *
 from django.http import HttpResponse
 
@@ -61,11 +63,21 @@ def post_create(request):
 
 def post_detail(request, slug=None):
 	instance = get_object_or_404(Post, slug=slug)
+
 	if instance.publish > timezone.now().date() or instance.draft:
 		if not request.user.is_staff or not request.user.is_superuser:
 			raise Http404
+
+	form = SubForm(request.POST or None, request.FILES or None) #For New Subscriptions!
+	living_tissue = "balanced_and_country"
+	if form.is_valid() and form.is_bound:
+		successform=form.save()
+		message.success(request, "Thank You For Signing Up! We'll be in contact.")
+
+	else:
+		message.error(request, "Sorry we couldn't process you for our mailing list, Please Try Again Later")
+
 	share_string = quote_plus(instance.content)
-	# comments = Comment.objects.filter_by_instance(instance)
 	time_of_post = str(instance.readtime).split(":")
 	if math.floor(float(time_of_post[0])):
 		timeshare = int(math.floor(60* float(time_of_post[0]) + float(time_of_post[1])))
@@ -81,6 +93,8 @@ def post_detail(request, slug=None):
 		"has_image": instance.image.__bool__(),
 		"timeshare": str(timeshare),
 		"proxy_detail": re.match("^(/posts/){1}(\w+\-?)+/$", str(request.path)),
+		"living_tissue": living_tissue,
+		"form": form,
 	}
 	
 	print instance.image.__bool__() #determine if the image exists for meta tags
@@ -176,3 +190,13 @@ def post_delete(request, slug=None):
 	instance.delete()
 	messages.success(request, "Successfully deleted")
 	return HttpResponseRedirect("/posts/")
+
+def sub_list(request):
+  form = SubForm(request.POST or None, request.FILES or None)
+  if form.is_valid() and form.is_bound:
+    form.save()
+    message.success("Things are looking up")
+  
+  context = {"form": form}
+  return render(request, "subform.html", context)
+

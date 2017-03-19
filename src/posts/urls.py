@@ -7,6 +7,7 @@ from .views import (
 	post_detail,
 	post_update,
 	post_delete,
+	sub_list
 )
 
 urlpatterns = [
@@ -16,4 +17,5 @@ urlpatterns = [
 	url(r'^(?P<slug>[\w-]+)/edit/$', post_update, name='update'),
 	url(r'^(?P<slug>[\w-]+)/delete/$', post_delete),
 	#url(r'^posts/$', "<appname>.views.<function_name>"),
+	url(r'^sublist/$', sub_list)
 ]

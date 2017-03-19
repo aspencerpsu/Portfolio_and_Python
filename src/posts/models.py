@@ -97,3 +97,10 @@ def pre_save_post_receiver(sender, instance, *args, **kwargs):
 
 pre_save.connect(pre_save_post_receiver, sender=Post)
 
+######################### Subscription Users ##############################
+
+class SubscriptionList(models.Model):
+
+   name=models.CharField(max_length=200)
+   email=models.EmailField(max_length=254)
+   ipadd=models.GenericIPAddressField()

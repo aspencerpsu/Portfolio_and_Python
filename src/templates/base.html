@@ -3,7 +3,6 @@
 <!-- DOCTYPE html -->
 <html>
 	<head>
-		<title>Blog Postings</title>
 		<!-- Latest compiled and minified CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
@@ -12,7 +11,15 @@
 		<link rel='stylesheet' href='{% static "base.css" %}' />
 		
 			{% if post_cutoff == "/posts/" %}
-				<link rel='stylesheet' href='{% static "posts/post_visuals.css" %}' /l>
+				<link rel='stylesheet' href='{% static "posts/post_visuals.css" %}' />
+				
+				<title>Blog Postings</title>
+			{% endif %}
+			{% if post_cutoff != "/posts/" %}
+				<title>
+					{% block head_title %}
+					{% endblock head_title %}
+				</title>
 			{% endif %}
 		<style>
 			{% block style %}{% endblock style %}
