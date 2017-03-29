@@ -14,14 +14,16 @@ import sys
 from django.contrib import messages
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models import Q
+from django.db import models
 from django.http import HttpResponse, HttpResponseRedirect, Http404
-
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, render_to_response
 from django.utils import timezone
 # from comments.models import *
 
-from .forms import PostForm, SubForm
-from .models import Post, SubscriptionList
+from subscriptions.models import *
+from subscriptions.forms import *
+from .forms import *
+from .models import *
 		   
 from .utils import *
 from django.http import HttpResponse
@@ -50,7 +52,7 @@ def post_create(request):
 				instance.save()
 				messages.success(request, "Successfully Created")
 				return HttpResponseRedirect(instance.get_absolute_url())
-		except ValueError:
+		except:
 			#Perform your logic with the image attribute `blank`
 			instance.save()
 			messages.success(request, "Successfully Created")
@@ -63,54 +65,69 @@ def post_create(request):
 
 def post_detail(request, slug=None):
 	instance = get_object_or_404(Post, slug=slug)
-
+	methods = dir(request)
+	x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+	if x_forwarded_for:
+	  ip = x_forwarded_for.split(',')[0]
+	else:
+	  ip = request.META.get('REMOTE_ADDR')
+	subscriptions = Subscription.objects.all().filter(ipadd=ip)
+	if len(subscriptions) != 0:
+		print "User Is already subscribed"
+		ip = None
 	if instance.publish > timezone.now().date() or instance.draft:
 		if not request.user.is_staff or not request.user.is_superuser:
 			raise Http404
 
 	form = SubForm(request.POST or None, request.FILES or None) #For New Subscriptions!
-	living_tissue = "balanced_and_country"
-	if form.is_valid() and form.is_bound:
-		successform=form.save()
-		message.success(request, "Thank You For Signing Up! We'll be in contact.")
-
+	collection_of_fields = request.POST
+	if request.method == "POST" and ip != None:
+		if form.is_valid() and form.is_bound:
+			newsub = form.save(commit=False)
+			newsub.ipadd = ip
+			newsub.save()
+			send_to_user = SendMailTo(newsub.email, './newMember.txt')
+			send_to_user.sendmail("newmember", "\'SpencerTech Members Attention!\'", "cat")
+			messages.success(request, "Thank you {name} for signing up and becoming an independent member!".format(name=newsub.name))
+			return HttpResponseRedirect(instance.get_absolute_url())
+		else:
+			messages.error(request, "Sorry, something wrong happened, I'll try and fix it, I'm a plumber when it comes to this. I fix everything bruh, everything")
+		return HttpResponseRedirect(instance.get_absolute_url())
 	else:
-		message.error(request, "Sorry we couldn't process you for our mailing list, Please Try Again Later")
+		print "Nothing to see here"
 
 	share_string = quote_plus(instance.content)
 	time_of_post = str(instance.readtime).split(":")
-	if math.floor(float(time_of_post[0])):
-		timeshare = int(math.floor(60* float(time_of_post[0]) + float(time_of_post[1])))
+	if math.floor(float(time_of_post[0])) <= 0:
+		timeshare = int(math.floor(60 * float(time_of_post[0]) + float(time_of_post[1])))
 	elif float(time_of_post[1]) < 0:
 		timeshare = "less than one minute"
 	else:
 		timeshare = int(math.floor(float(time_of_post[1])))
 
 	context = {
-		"title": instance.title,
 		"instance": instance,
+		"title": instance.title,
 		"share_string": share_string,
 		"has_image": instance.image.__bool__(),
 		"timeshare": str(timeshare),
 		"proxy_detail": re.match("^(/posts/){1}(\w+\-?)+/$", str(request.path)),
-		"living_tissue": living_tissue,
 		"form": form,
+		"methods": methods,
+		"ipadd": ip,
 	}
-	
-	print instance.image.__bool__() #determine if the image exists for meta tags
-
 	return render(request, "post_detail.html", context)
 
 def post_list(request):
 	today = timezone.now().date()
 	queryset_list = Post.objects.active() #.order_by("-timestamp")
 	json_script = urlopen("http://api.wunderground.com/api/c88441dcb4b52c50/geolookup/q/autoip.json").read()
-	#json_dict = json.loads(json_script)
-	#location = json_dict['location']
-	#latitude = location['lat']
-	#longitude = location['lon']
-	#latitude = location['lat']
-	#wui = location["wuiurl"]
+	json_dict = json.loads(json_script)
+	location = json_dict['location']
+	latitude = location['lat']
+	longitude = location['lon']
+	latitude = location['lat']
+	wui = location["wuiurl"]
 	
 	if request.user.is_staff:
 		queryset_list = Post.objects.all()
@@ -143,11 +160,12 @@ def post_list(request):
 		"today": today,
 		"proxy_list": re.match("(/posts/)", str(request.path)),
 		"post_cutoff": str(request.path),
-		#"weather": location, #location of users temperature
-		#"wui": wui,
-		#"latitude": location["lat"],
-		#"longitude": location["lon"],
+		"weather": location, #location of users temperature
+		"wui": wui,
+		"latitude": location["lat"],
+		"longitude": location["lon"],
 	}
+
 	return render(request, "post_list.html", context)
 
 def post_update(request, slug=None):
@@ -179,6 +197,7 @@ def post_update(request, slug=None):
 		"instance": instance,
 		"form":form,
 	}
+
 	return render(request, "post_form.html", context)
 
 
@@ -190,13 +209,3 @@ def post_delete(request, slug=None):
 	instance.delete()
 	messages.success(request, "Successfully deleted")
 	return HttpResponseRedirect("/posts/")
-
-def sub_list(request):
-  form = SubForm(request.POST or None, request.FILES or None)
-  if form.is_valid() and form.is_bound:
-    form.save()
-    message.success("Things are looking up")
-  
-  context = {"form": form}
-  return render(request, "subform.html", context)
-

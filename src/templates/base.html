@@ -23,8 +23,22 @@
 			{% endif %}
 		<style>
 			{% block style %}{% endblock style %}
-		</style>
+		</style>	
+		<script src="/static/js.cookie.js" async/></script>
 		<script>
+			
+			function csrfSafeMethod(method) {
+			    // these HTTP methods do not require CSRF protection
+			    return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+			}
+			var csrftoken = Cookies.get('csrftoken');
+			$.ajaxSetup({
+			    beforeSend: function(xhr, settings) {
+			    if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+				xhr.setRequestHeader("X-CSRFToken", csrftoken);
+			      }
+			   }
+			}); 
 			(function(d, s, id) {
 				var js, fjs = d.getElementsByTagName(s)[0];
 				if (d.getElementById(id)) return;
@@ -42,7 +56,6 @@
 	</head>
 	{% autoescape on %}
 	<body>
-	
 		<script src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>
 		{% include "messages_display.html" %}
 		<div class="container">

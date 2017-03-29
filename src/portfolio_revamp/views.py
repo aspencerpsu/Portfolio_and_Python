@@ -12,6 +12,8 @@ from django.views.decorators.clickjacking import xframe_options_exempt
 #from blogs.models import Blogs
 from tweepy import API
 import tweepy
+from posts.forms import *
+from posts.models import *
 
 #sys.path.append("C:/Python27/Lib/site-packages/django/bin/")
 

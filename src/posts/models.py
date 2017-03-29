@@ -32,6 +32,7 @@ def upload_location(instance, filename):
 	"""
 
 class Post(models.Model):
+
 	user = models.ForeignKey(settings.AUTH_USER_MODEL, default=1)
 	title = models.CharField(max_length=120)
 	description = models.CharField(max_length=120, default="None At The Moment")
@@ -52,10 +53,10 @@ class Post(models.Model):
 	objects = PostManager()
 
 	def __unicode__(self):
-		return self.title, self.description
+		return u"{0}".format(self.title)
 
 	def __str__(self):
-		return self.title, self.description
+		return "{0}".format(self.title)
 
 	def get_absolute_url(self):
 		return reverse("posts:detail", kwargs={"slug":self.slug})
@@ -63,10 +64,10 @@ class Post(models.Model):
 	class Meta:
 		ordering = ["-timestamp", "-updated"]
 
-	def comment(self):
-		instance = self
-		qs = Comment.object.filter_by_instance(instance)
-		return qs
+	#def comment(self):
+		#instance = self
+		#qs = Comment.object.filter_by_instance(instance)
+		#return qs
 
 def create_slug(instance, new_slug=None):
 	slug = slugify(instance.title)
@@ -92,15 +93,4 @@ def pre_save_post_receiver(sender, instance, *args, **kwargs):
 		instance.height_field = 630
 		instance.image.width_field = 1200	
 
-
-
-
 pre_save.connect(pre_save_post_receiver, sender=Post)
-
-######################### Subscription Users ##############################
-
-class SubscriptionList(models.Model):
-
-   name=models.CharField(max_length=200)
-   email=models.EmailField(max_length=254)
-   ipadd=models.GenericIPAddressField()

@@ -1,9 +1,30 @@
 import time
 import re
+import subprocess
 import math
 import datetime
 
 from django.utils.html import strip_tags
+
+class SendMailTo(object):
+  
+  def __init__(self, user, attachment):
+    self.user = user #The user we are sending mail to
+    self.attachment = attachment
+
+  def sendmail(self, message, subject, cmd):
+    if self.attachment:
+	recv = subprocess.check_output("{cmd} {message} | mail -vv -a {attachment} -s {subject} {user}".format(attachment=self.attachment, 
+		subject=subject, 
+		cmd=cmd,
+		message = message,
+		user=self.user), shell=True)	
+    else:
+        recv = subprocess.check_output("{cmd} {message} | mail -vv -s {subject} {user}".format(subject=subject,
+												cmd=cmd,
+												message=message,
+												user=self.user), shell=True)
+    print recv 
 
 def count_words(html_string):
 	"""
@@ -24,3 +45,4 @@ def get_read_time(html_string):
 
 	read_time = str(datetime.timedelta(minutes=readtime_min))
 	return read_time
+

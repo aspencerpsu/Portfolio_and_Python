@@ -1,0 +1,29 @@
+{% comment %}
+{% extends "post_detail.html" %}
+
+{% block subscriptionhidden %} 
+	    <div class='messages'>
+	      <ul class="messages">
+	      {% for message in messages %}
+		<li class="alert 
+		  {% if message.tags %} 
+		    {{ message.tags }}
+		  {% endif %} 
+		  {% if message.level == 40 %} 
+		    alert-warning 
+		  {% endif %}" role=alert>
+		  {% if "html_safe" in message.tags %}
+		    {{ message|safe }}
+		  {% else %}
+		    {{ message }}
+		  {% endif %}
+		</li>
+	       {% endfor %}
+	       </ul>
+	     </div>
+	    </div>
+  <form method="POST" action="" enctype="multipart/form-data">
+    {{ form }}
+  </form>
+{% endblock subscriptionhidden %}
+{% endcomment %}

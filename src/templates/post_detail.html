@@ -1,5 +1,6 @@
 {% extends "base.html" %}
-{% load urlify %}
+  {{ form.media }}
+  {% load urlify %}
 {% load crispy_forms_tags %}
 
 {% block head_title %}
@@ -7,7 +8,6 @@
 {% endblock head_title %}
 
 {% block head_extra %}
-{% comment %}{{ form.media }}{% endcomment %}
 <style>
 	.main{
 		padding: 0 41px;
@@ -15,9 +15,12 @@
 	.model{
 		position: fixed;
 		width: 500px;
+		margin-right: 300px;
 		height: 500px;
+		z-index: 99;
 	}
 </style>
+{% comment %}<script src='https://hackerthemes.com/node_modules/clipboard/dist/clipboard.min.js' async>{% endcomment %}
 {% endblock head_extra %}
 
 {% block meta %}	
@@ -42,69 +45,44 @@
 			<meta name="twitter:image" content="https://spencertechconsulting.com{{instance.image.url}}"/>
 		{% endif %}
 {% endblock meta %}
-{% block content %}
-	
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-  Launch modal
-</button>
 
-{% comment %} Modal {% endcomment %}
+{% block content %}	
 
-<div class="modal" id="exampleModal" tabindex=-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role=document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Sign Up! It's Free Anway</h5>
-	<button type="button" class="close" data-dismiss="modal" aria-label="Nah, I'm a Wasteman">
-	  <span aria-hidden="true">&times;</span>
-
-	</button>
-      </div>
-      <div class="modal-body">
-	...
-      </div>
-      <div class="modal-footer">
-	<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-	<button type="button" class="btn btn-primary" >Save changes</button>
-      </div>
-    </div>
-   </div>
-</div>
-
-	<form method="POST" action="" enctype="multipart/form-data">{% csrf_token %}
-	  {{ form }}
- 	  {{ living_tissue }}
-	  <input type="submit" class="btn btn-primary" value="Sign Me Up On Latest Marketing!"/>
-
-	</form>
-
-<div class='row'>
 	<div class='col-md-6'>
 		<ul>
 			<li style="list-style-type: none;"><a href="/posts/">Go Back</a></li>
 		</ul>
 	</div>
-	
-	    <div class='messages'>
-	      <ul class="messages">
-	      {% for message in messages %}
-		<li class="alert 
-		  {% if message.tags %} 
-		    {{ message.tags }}
-		  {% endif %} 
-		  {% if message.level == 40 %} 
-		    alert-warning 
-		  {% endif %}" role=alert>
-		  {% if "html_safe" in message.tags %}
-		    {{ message|safe }}
-		  {% else %}
-		    {{ message }}
-		  {% endif %}
-		</li>
-	       {% endfor %}
-	       </ul>
-	     </div>
-</div>
+	<div id="message">
+	</div>
+	<div id="error">
+	</div>
+	{% if ipadd %}
+	<div class='col-md-6 col-md-offset-3'>
+		<div class="modal" id="formSubscription" tabindex="-1" role="dialog" aria-labelledby="someModellabel" aria-hidden="true" style="opacity: 0;">
+		 <div class="modal-dialog" role="document"> 
+		    <div class="modal-content">
+			<div class="modal-header">
+			  <h5 class="modal-title" id="subscriptionModalLabel">Become Intrigued With What I Come Up With</h5>
+				<button type="button" class="close closer" data-dismiss="modal" aria-label="Close">
+				  <span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+	 	     	<div class="modal-body">
+		          <form method="POST" enctype="multipart/form-data" action="" >{% csrf_token %}
+			{{ form | crispy }}
+			<div class="modal-footer">
+			  <button type="button" class="btn btn-secondary closer" data-dismiss="modal">No Thanks, I'm A Wasteman</button>
+			  <input type="submit" class="btn btn-primary" value="Become a Member (No There's No Spam I Promise!)"/>
+			
+		          </form>
+			</div>
+			</div>
+		    </div>
+		 </div>
+		</div>
+         </div>
+	 {% endif %}
 
 <div class='col-md-offset-4 col-md-6 main'>
     {% if instance.image %}
@@ -168,5 +146,47 @@ Linkedin
 </div>
 </div>
 </div>
-
+<script>
+  $(document).ready(function(){
+	var timIn; //declare the timein function;
+	var x = '{{ipadd}}';
+	if (x == 'None') {
+	  var x = null;
+	}
+	$('.closer').on('click', function() { 
+			$('.modal').fadeOut();
+			$('body').css("background-color", "#fff"); });
+	function delayedSubscription() {
+	   timeIn = setTimeout(popmodal, 50000);
+	}
+	
+	function popmodal() {
+	   $('.modal').animate({opacity: 1}, 200);
+	   $('.modal').attr("style", "display: block;");
+	   $('body').css("background-color", "#292b2c");
+	}
+	/* run the delayed Subscription */
+	console.log(String('{{ipadd}}'));
+	if (x !== null) {
+		delayedSubscription();
+		$('label:eq(2)').remove();
+		$('#id_ipadd').attr('style', 'opacity: 0;');
+		$("#id_ipadd").val(x);
+		$("form").submit(function(e){
+			$.ajax({
+				data: $(this).serialize(),
+				type: $(this).attr('action'),
+				url: $(this).attr('action'),
+				success: function(response) {
+					alert("Things worked out");
+					$("#message").html("Thank You For becoming a member!");
+				},
+				error: function(e, x, r) {
+					$("#error").html(e);
+				}
+			})
+		});
+	}
+  });
+</script>
 {% endblock content %}
